@@ -1,0 +1,20 @@
+Threshold population size for super individuals [#],10
+Number of siblings per super indiviual [#],70
+Maximum periphyton growth rate [1/d],3.05
+Periphyton carying capacity [g/m^2],17
+Periphyton Arrhenius temperature [K],5500
+Initial leaf litter density [g/m^2],9
+Leaf litter energy density [J/g],7227.5
+Day of year for litter addition [d],270
+C-POM settlement rate [1/d],0.1
+Maximum velocity class for C-POM addition [1...6],4
+Settlement rate for F-POM and animal remains [1/d],0.3
+Initial F-POM density [J/m^2],80000
+Initial S-POM density [J/m^2],500
+Fraction of S-POM available to filter feeders [-],0.0001
+Periphyton energy density [J/g],4623
+use population density [#/m^2] as output,TRUE
+save population size,TRUE
+save trait size,TRUE
+save population distribution,TRUE
+save trait distribution,TRUE
