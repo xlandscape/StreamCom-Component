@@ -1,0 +1,13 @@
+Information	Value	Comment				
+Substance	Deltamethrin					
+Concentration_unit	ng/L	[Unit of concentration for exposure and parameter values]				
+PMoA	feeding	"[feeding, maintenance costs, growht, oogenesis hazard]"				
+						
+						
+						
+Parameter	Description	Unit	Gammarus pulex	Dikerogammarus villosus	Gammarus fossarum	Planorbis planorbis
+kd	dominant rate constant for Lm/L	1/d	0.212592	0.212592	0.212592	0.212592
+z	threshold for lethal effect	unit of external concentration	0.6292	0.6292	0.6292	0.6292
+kk	killing rate	l/(ng*d)	0.47736	0.47736	0.47736	0.47736
+c0	threshold for sublethal effect	unit of external concentration	1000	1000	1000	1000
+cT	tolerance concentration	unit of external concentration	1	1	1	1
