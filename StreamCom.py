@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.0.3", "2021-07-19"),
         base.VersionInfo("2.0.2", "2021-01-25"),
         base.VersionInfo("2.0.1", "2020-12-03"),
         base.VersionInfo("2.0.0", "2020-10-22"),
@@ -32,22 +33,23 @@ class StreamCom(base.Component):
     )
 
     # CHANGELOG
-    VERSION.added("1.3.21", "components.StreamCom component")
-    VERSION.fixed("1.3.22", "Reach indexing in components.StreamCom")
-    VERSION.changed("1.3.24", "components.StreamCom uses base function to call module")
-    VERSION.changed("1.3.25", "components.StreamCom updated to module version 2.0.4")
-    VERSION.changed("1.3.27", "components.StreamCom specifies scales")
-    VERSION.changed("1.3.31", "components.StreamCom updated to module version 2.0.10")
-    VERSION.changed("1.3.32", "components.StreamCom updated to module version 2.0.17")
-    VERSION.changed("1.3.33", "components.StreamCom checks input types strictly")
-    VERSION.fixed("1.3.33", "components.StreamCom where slicing of exposure input was incorrect")
-    VERSION.changed("1.3.33", "components.StreamCom checks for physical units")
-    VERSION.changed("1.3.33", "components.StreamCom checks for scales")
-    VERSION.fixed("1.3.34", "Physical units of killing rate in components.StreamCom")
-    VERSION.fixed("1.3.35", "components.StreamCom receives CommonProgramFiles(x86) environment variable")
+    VERSION.added("1.3.21", "`components.StreamCom` component")
+    VERSION.fixed("1.3.22", "Reach indexing in `components.StreamCom` ")
+    VERSION.changed("1.3.24", "`components.StreamCom` uses base function to call module")
+    VERSION.changed("1.3.25", "`components.StreamCom` updated to module version 2.0.4")
+    VERSION.changed("1.3.27", "`components.StreamCom` specifies scales")
+    VERSION.changed("1.3.31", "`components.StreamCom` updated to module version 2.0.10")
+    VERSION.changed("1.3.32", "`components.StreamCom` updated to module version 2.0.17")
+    VERSION.changed("1.3.33", "`components.StreamCom` checks input types strictly")
+    VERSION.fixed("1.3.33", "`components.StreamCom` where slicing of exposure input was incorrect")
+    VERSION.changed("1.3.33", "`components.StreamCom` checks for physical units")
+    VERSION.changed("1.3.33", "`components.StreamCom` checks for scales")
+    VERSION.fixed("1.3.34", "Physical units of killing rate in `components.StreamCom` ")
+    VERSION.fixed("1.3.35", "`components.StreamCom` receives CommonProgramFiles(x86) environment variable")
     VERSION.changed("2.0.0", "First independent release")
     VERSION.added("2.0.1", "Changelog and release history")
     VERSION.changed("2.0.2", "Error message when reach could not be found")
+    VERSION.added("2.0.3", ".gitignore")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
