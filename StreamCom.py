@@ -259,7 +259,6 @@ class StreamCom(base.Component):
         Runs the component.
         :return: Nothing.
         """
-        self.default_observer.write_message(2, "Component has additional external dependencies")
         processing_path = self.inputs["ProcessingPath"].read().values
         input_path = os.path.join(processing_path, "in")
         output_path = os.path.join(processing_path, "out")
@@ -375,12 +374,11 @@ class StreamCom(base.Component):
         :param output_path: The file path for the module's outputs.
         :return: Nothing.
         """
-        exe_path = os.path.join(os.path.dirname(__file__), "module", "ProjectStreamCom.exe")
         number_days = int((self.inputs["LastDay"].read().values - self.inputs["FirstDay"].read().values).days) + 1
         # noinspection SpellCheckingInspection
         base.run_process(
             (
-                exe_path,
+                os.path.join(os.path.dirname(__file__), "module", "ProjectStreamCom.exe"),
                 "--site_name",
                 "site.txt",
                 "--num_mc",
@@ -400,7 +398,7 @@ class StreamCom(base.Component):
             ),
             None,
             self.default_observer,
-            {"CommonProgramFiles(x86)": os.environ["CommonProgramFiles(x86)"]}
+            {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")}
         )
         return
 
