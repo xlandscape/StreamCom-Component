@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.0.4", "2021-07-20"),
         base.VersionInfo("2.0.3", "2021-07-19"),
         base.VersionInfo("2.0.2", "2021-01-25"),
         base.VersionInfo("2.0.1", "2020-12-03"),
@@ -50,6 +51,8 @@ class StreamCom(base.Component):
     VERSION.added("2.0.1", "Changelog and release history")
     VERSION.changed("2.0.2", "Error message when reach could not be found")
     VERSION.added("2.0.3", ".gitignore")
+    VERSION.changed(
+        "2.0.4", "increased portability by shipping Microsoft's data access components with Landscape Model component")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
@@ -259,7 +262,6 @@ class StreamCom(base.Component):
         Runs the component.
         :return: Nothing.
         """
-        self.default_observer.write_message(2, "Component has additional external dependencies")
         processing_path = self.inputs["ProcessingPath"].read().values
         input_path = os.path.join(processing_path, "in")
         output_path = os.path.join(processing_path, "out")
@@ -375,12 +377,11 @@ class StreamCom(base.Component):
         :param output_path: The file path for the module's outputs.
         :return: Nothing.
         """
-        exe_path = os.path.join(os.path.dirname(__file__), "module", "ProjectStreamCom.exe")
         number_days = int((self.inputs["LastDay"].read().values - self.inputs["FirstDay"].read().values).days) + 1
         # noinspection SpellCheckingInspection
         base.run_process(
             (
-                exe_path,
+                os.path.join(os.path.dirname(__file__), "module", "ProjectStreamCom.exe"),
                 "--site_name",
                 "site.txt",
                 "--num_mc",
@@ -400,7 +401,7 @@ class StreamCom(base.Component):
             ),
             None,
             self.default_observer,
-            {"CommonProgramFiles(x86)": os.environ["CommonProgramFiles(x86)"]}
+            {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")}
         )
         return
 
