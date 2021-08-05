@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.0.5", "2021-08-05"),
         base.VersionInfo("2.0.4", "2021-07-20"),
         base.VersionInfo("2.0.3", "2021-07-19"),
         base.VersionInfo("2.0.2", "2021-01-25"),
@@ -52,7 +53,8 @@ class StreamCom(base.Component):
     VERSION.changed("2.0.2", "Error message when reach could not be found")
     VERSION.added("2.0.3", ".gitignore")
     VERSION.changed(
-        "2.0.4", "increased portability by shipping Microsoft's data access components with Landscape Model component")
+        "2.0.4", "Increased portability by shipping Microsoft's data access components with Landscape Model component")
+    VERSION.added("2.0.5", "Support of multiple module runs")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
