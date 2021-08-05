@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.0.5", "2021-08-05"),
         base.VersionInfo("2.0.4", "2021-07-20"),
         base.VersionInfo("2.0.3", "2021-07-19"),
         base.VersionInfo("2.0.2", "2021-01-25"),
@@ -52,7 +53,8 @@ class StreamCom(base.Component):
     VERSION.changed("2.0.2", "Error message when reach could not be found")
     VERSION.added("2.0.3", ".gitignore")
     VERSION.changed(
-        "2.0.4", "increased portability by shipping Microsoft's data access components with Landscape Model component")
+        "2.0.4", "Increased portability by shipping Microsoft's data access components with Landscape Model component")
+    VERSION.added("2.0.5", "Support of multiple module runs")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
@@ -251,6 +253,11 @@ class StreamCom(base.Component):
                 "BiomassIndividual",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
                 self.default_observer
+            ),
+            base.Input(
+                "NumberRuns",
+                (attrib.Class(int), attrib.Unit("1"), attrib.Scales("global")),
+                self.default_observer
             )
         ])
         self._store = store
@@ -385,7 +392,7 @@ class StreamCom(base.Component):
                 "--site_name",
                 "site.txt",
                 "--num_mc",
-                "1",
+                str(self.inputs["NumberRuns"].read().values),
                 "--sim_duration",
                 str(number_days),
                 "--input_path",
@@ -411,28 +418,34 @@ class StreamCom(base.Component):
         :param output_path: The file path of the module's outputs.
         :return: Nothing.
         """
+        number_runs = self.inputs["NumberRuns"].read().values
         for output in os.listdir(output_path):
             self.outputs.append(base.Output(output, self._store, self))
             with open(os.path.join(output_path, output)) as f:
                 data = [row[:-1].split("\t") for row in f.readlines()[1:]]
             if output[:2] in ["f_", "h_"]:
-                values = np.zeros((len(data),))
+                values = np.zeros((len(data), number_runs))
                 for record in data:
-                    values[int(record[0]) - 1] = float(record[1].replace(",", "."))
-                self.outputs[output].set_values(values, scales="time/day_of_year")
+                    for run in range(number_runs):
+                        values[int(record[0]) - 1, run] = float(record[run + 1].replace(",", "."))
+                self.outputs[output].set_values(values, scales="time/day_of_year, other/runs")
             elif output[:11] == "population_":
-                values = np.zeros((len(data),), np.int)
+                values = np.zeros((len(data), number_runs), np.int)
                 for record in data:
-                    values[int(record[0]) - 1] = int(record[1].replace(",", "."))
-                self.outputs[output].set_values(values, scales="time/day_of_year")
+                    for run in range(number_runs):
+                        values[int(record[0]) - 1, run] = int(record[run + 1].replace(",", "."))
+                self.outputs[output].set_values(values, scales="time/day_of_year, other/runs")
             elif output[:3] == "xy_":
                 x_values = [int(record[0]) for record in data]
                 y_values = [int(record[1]) for record in data]
-                results = [float(record[3].replace(",", ".")) for record in data]
-                values = np.zeros((max(x_values) + 1, max(y_values) + 1))
-                for i in range(len(results)):
-                    values[(x_values[i], y_values[i])] = results[i]
-                self.outputs[output].set_values(values, scales="space/x_5dm, space/y_5dm")
+                results = [[]] * number_runs
+                for run in range(number_runs):
+                    results[run] = [float(record[run + 3].replace(",", ".")) for record in data]
+                values = np.zeros((max(x_values) + 1, max(y_values) + 1, number_runs))
+                for run in range(number_runs):
+                    for i in range(len(results[run])):
+                        values[x_values[i], y_values[i], run] = results[run][i]
+                self.outputs[output].set_values(values, scales="space/x_5dm, space/y_5dm, other/runs")
             else:
                 self.default_observer.write_message(2, "Unknown output: " + output)
         return
