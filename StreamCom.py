@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.0", "2021-08-09"),
         base.VersionInfo("2.0.5", "2021-08-05"),
         base.VersionInfo("2.0.4", "2021-07-20"),
         base.VersionInfo("2.0.3", "2021-07-19"),
@@ -55,11 +56,12 @@ class StreamCom(base.Component):
     VERSION.changed(
         "2.0.4", "Increased portability by shipping Microsoft's data access components with Landscape Model component")
     VERSION.added("2.0.5", "Support of multiple module runs")
+    VERSION.changed("2.1.0", "Updated module to version 2.0.20")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
         # noinspection SpellCheckingInspection
-        self._module = base.Module("STREAMcom", "2.0.19")
+        self._module = base.Module("STREAMcom", "2.0.20")
         self._inputs = base.InputContainer(self, [
             base.Input(
                 "ProcessingPath",
@@ -250,8 +252,8 @@ class StreamCom(base.Component):
                 self.default_observer
             ),
             base.Input(
-                "BiomassIndividual",
-                (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
+                "StartBiomass",
+                (attrib.Class(str), attrib.Unit(None), attrib.Scales("global"), attrib.InList(("Ind/m^2", "g/m^2"))),
                 self.default_observer
             ),
             base.Input(
@@ -404,7 +406,8 @@ class StreamCom(base.Component):
                 "--tox_sublethal" if self.inputs["UseSubLethalToxEffects"].read().values else "",
                 "--species",
                 ",".join(self._selectedSpecies),
-                "--biomass_ind" if self.inputs["BiomassIndividual"].read().values else ""
+                "--start_biomass",
+                self.inputs["StartBiomass"].read().values
             ),
             None,
             self.default_observer,
