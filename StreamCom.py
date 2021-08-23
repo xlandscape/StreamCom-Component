@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.1", "2021-08-23"),
         base.VersionInfo("2.1.0", "2021-08-09"),
         base.VersionInfo("2.0.5", "2021-08-05"),
         base.VersionInfo("2.0.4", "2021-07-20"),
@@ -57,6 +58,7 @@ class StreamCom(base.Component):
         "2.0.4", "Increased portability by shipping Microsoft's data access components with Landscape Model component")
     VERSION.added("2.0.5", "Support of multiple module runs")
     VERSION.changed("2.1.0", "Updated module to version 2.0.20")
+    VERSION.changed("2.1.1", "Ensured to run in normal window mode")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
@@ -411,7 +413,8 @@ class StreamCom(base.Component):
             ),
             None,
             self.default_observer,
-            {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")}
+            {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")},
+            False
         )
         return
 
