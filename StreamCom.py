@@ -411,7 +411,8 @@ class StreamCom(base.Component):
             ),
             None,
             self.default_observer,
-            {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")}
+            {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")},
+            False
         )
         return
 
