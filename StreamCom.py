@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.2", "2021-08-31"),
         base.VersionInfo("2.1.1", "2021-08-23"),
         base.VersionInfo("2.1.0", "2021-08-09"),
         base.VersionInfo("2.0.5", "2021-08-05"),
@@ -35,6 +36,27 @@ class StreamCom(base.Component):
         base.VersionInfo("1.3.22", "2020-03-27"),
         base.VersionInfo("1.3.21", "2020-03-26")
     )
+
+    # AUTHORS
+    VERSION.authors.extend((
+        "Sascha Bub (component) - sascha.bub@gmx.de",
+        "Thorsten Schad (component) - thorsten.schad@bayer.com",
+        "Tido Strauß (module) - strauss@gaiac-eco.de",
+        "Jana Gerhard (module) - gerhard@gaiac-eco.de"
+    ))
+
+    # ACKNOWLEDGEMENTS
+    VERSION.acknowledgements.extend((
+        "[NumPy](https://numpy.org)",
+    ))
+
+    # ROADMAP
+    VERSION.roadmap.extend((
+        """Start module GUI in background
+        ([#1](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/1))""",
+        """Unknown output: report.txt
+        ([#3](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/3))""",
+    ))
 
     # CHANGELOG
     VERSION.added("1.3.21", "`components.StreamCom` component")
@@ -59,26 +81,32 @@ class StreamCom(base.Component):
     VERSION.added("2.0.5", "Support of multiple module runs")
     VERSION.changed("2.1.0", "Updated module to version 2.0.20")
     VERSION.changed("2.1.1", "Ensured to run in normal window mode")
+    VERSION.changed("2.1.2", "Added base documentation")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
         # noinspection SpellCheckingInspection
-        self._module = base.Module("STREAMcom", "2.0.20")
+        self._module = base.Module("STREAM-com", "2.0.20")
         self._inputs = base.InputContainer(self, [
             base.Input(
                 "ProcessingPath",
                 (attrib.Class(str, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="""The working directory for the module. It is used for all files prepared as module inputs
+                or generated as module outputs."""
             ),
             base.Input(
                 "Reaches",
                 (attrib.Class("list[int]", 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
-                self.default_observer
+                self.default_observer,
+                description="""The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
+                that apply scenario-wide."""
             ),
             base.Input(
                 "Reach",
                 (attrib.Class(int, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The numerical identifier of the reach that is selected for the StreamCom simulation."
             ),
             base.Input(
                 "Concentrations",
@@ -87,22 +115,27 @@ class StreamCom(base.Component):
                     attrib.Unit("ng/l", 1),
                     attrib.Scales("time/hour, space/base_geometry", 1)
                 ),
-                self.default_observer
+                self.default_observer,
+                description="The substance concentrations in water phase."
             ),
             base.Input(
                 "Species",
                 (attrib.Class("list[str]", 1), attrib.Unit(None, 1), attrib.Scales("other/species", 1)),
-                self.default_observer
+                self.default_observer,
+                description="""The list of species simulated by StreamCom. See the scenario description for the 
+                available species."""
             ),
             base.Input(
                 "DominantRateConstantsForLm",
                 (attrib.Class("list[float]", 1), attrib.Unit("1/d", 1), attrib.Scales("other/species", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The dominant rate constants for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "ThresholdsForLethalEffects",
                 (attrib.Class("list[float]", 1), attrib.Unit("ng/l", 1), attrib.Scales("other/species", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The thresholds for lethal effects for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "KillingRates",
@@ -111,157 +144,188 @@ class StreamCom(base.Component):
                     attrib.Unit("l/(ng*d)", 1),
                     attrib.Scales("other/species", 1)
                 ),
-                self.default_observer
+                self.default_observer,
+                description="The killing rates for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "SiteInformation",
                 (attrib.Class(str, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The path to the XML file describing the simulated site."
             ),
             base.Input(
                 "SpeciesParameters",
                 (attrib.Class(str, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The path to the XML file containing the database of species parameters."
             ),
             base.Input(
                 "WaterTemperature",
                 (attrib.Class(str, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The path to a TSV file containing a time-series of water temperatures."
             ),
             base.Input(
                 "Site",
                 (attrib.Class(str, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The name of the site."
             ),
             base.Input(
                 "FirstDay",
                 (attrib.Class(datetime.date, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The first simulated day."
             ),
             base.Input(
                 "LastDay",
                 (attrib.Class(datetime.date, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The last simulated day."
             ),
             base.Input(
                 "UseSubLethalToxEffects",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="Specifies whether sub-lethal effects are simulated."
             ),
             base.Input(
                 "ThresholdPopulationSizeForSuperIndividuals",
                 (attrib.Class(int, 1), attrib.Unit("1", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The population size threshold for super-individuals."
             ),
             base.Input(
                 "NumberOfSiblingsPerSuperIndividual",
                 (attrib.Class(int, 1), attrib.Unit("1", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The number of siblings per super-individual."
             ),
             base.Input(
                 "MaximumPeriphytonGrowthRate",
                 (attrib.Class(float, 1), attrib.Unit("1/d", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The maximum periphyton growth rate."
             ),
             base.Input(
                 "PeriphytonCarryingCapacity",
                 (attrib.Class(float, 1), attrib.Unit("g/m²", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The periphyton carrying capacity."
             ),
             base.Input(
                 "PeriphytonArrheniusTemperature",
                 (attrib.Class(float, 1), attrib.Unit("K", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The periphyton Arrhenius temperature."
             ),
             base.Input(
                 "InitialLeafLitterDensity",
                 (attrib.Class(float, 1), attrib.Unit("g/m²", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The initial leaf-litter density."
             ),
             base.Input(
                 "LeafLitterEnergyDensity",
                 (attrib.Class(float, 1), attrib.Unit("J/g", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The energy-density of leaf-litter."
             ),
             base.Input(
                 "DayOfYearForLitterAddition",
                 (attrib.Class(int, 1), attrib.Unit("d", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The day of the year when leaf-litter is added to the stream."
             ),
             base.Input(
                 "C-PomSettlementRate",
                 (attrib.Class(float, 1), attrib.Unit("1/d", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The C-Pom settlement rate."
             ),
             base.Input(
                 "MaximumVelocityClassForC-PomAddition",
                 (attrib.Class(int, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The maximum velocity class for C-Pom additions."
             ),
             base.Input(
-                "SettlementRateForF-PomAndAnimalRemains",
+                "SettlementRateForFPomAndAnimalRemains",
                 (attrib.Class(float, 1), attrib.Unit("1/d", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The settlement rate for F-Pom and animal remains."
             ),
             base.Input(
                 "InitialF-PomDensity",
                 (attrib.Class(float, 1), attrib.Unit("J/m²", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The initial F-Pom density."
             ),
             base.Input(
                 "InitialS-PomDensity",
                 (attrib.Class(float, 1), attrib.Unit("J/m²", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The initial S-Pom density."
             ),
             base.Input(
                 "FractionOfS-PomAvailableToFilterFeeders",
                 (attrib.Class(float, 1), attrib.Unit("1", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The fraction of S-Pom available to filter-feeders."
             ),
             base.Input(
                 "PeriphytonEnergyDensity",
                 (attrib.Class(float, 1), attrib.Unit("J/g", 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The periphyton energy-density."
             ),
             base.Input(
                 "UsePopulationDensity",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="Specifies whether to use population density."
             ),
             base.Input(
                 "SavePopulationSize",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="Specifies whether to output the population size."
             ),
             base.Input(
                 "SaveTraitSize",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="Specifies whether to output trait size."
             ),
             base.Input(
                 "SavePopulationDistribution",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="Specifies whether to output population distributions."
             ),
             base.Input(
                 "SaveTraitDistribution",
                 (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="Specifies whether to output trait distributions."
             ),
             base.Input(
                 "Biomass",
                 (attrib.Class(str, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
-                self.default_observer
+                self.default_observer,
+                description="The path to a text file specifying initial biomass."
             ),
             base.Input(
                 "StartBiomass",
                 (attrib.Class(str), attrib.Unit(None), attrib.Scales("global"), attrib.InList(("Ind/m^2", "g/m^2"))),
-                self.default_observer
+                self.default_observer,
+                description="Specifies the unit odf initial biomass."
             ),
             base.Input(
                 "NumberRuns",
                 (attrib.Class(int), attrib.Unit("1"), attrib.Scales("global")),
-                self.default_observer
+                self.default_observer,
+                description="The number of module-internal Monte Carlo runs."
             )
         ])
         self._store = store
@@ -486,7 +550,7 @@ class StreamCom(base.Component):
             f.write("Maximum velocity class for C-POM addition [1...6],{}\n".format(
                 self.inputs["MaximumVelocityClassForC-PomAddition"].read().values))
             f.write("Settlement rate for F-POM and animal remains [1/d],{}\n".format(
-                self.inputs["SettlementRateForF-PomAndAnimalRemains"].read().values))
+                self.inputs["SettlementRateForFPomAndAnimalRemains"].read().values))
             f.write("Initial F-POM density [J/m^2],{}\n".format(
                 self.inputs["InitialF-PomDensity"].read().values))
             f.write("Initial S-POM density [J/m^2],{}\n".format(
