@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.2", "2021-08-31"),
         base.VersionInfo("2.1.1", "2021-08-23"),
         base.VersionInfo("2.1.0", "2021-08-09"),
         base.VersionInfo("2.0.5", "2021-08-05"),
@@ -80,6 +81,7 @@ class StreamCom(base.Component):
     VERSION.added("2.0.5", "Support of multiple module runs")
     VERSION.changed("2.1.0", "Updated module to version 2.0.20")
     VERSION.changed("2.1.1", "Ensured to run in normal window mode")
+    VERSION.changed("2.1.2", "Added base documentation")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)

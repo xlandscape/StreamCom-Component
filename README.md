@@ -17,7 +17,7 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-08-27.  
+version of this document is from 2021-08-31.  
 
 ### Built with
 * Landscape Model core version 1.5.10
