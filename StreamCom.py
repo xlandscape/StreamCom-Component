@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.3", "2021-09-17"),
         base.VersionInfo("2.1.2", "2021-08-31"),
         base.VersionInfo("2.1.1", "2021-08-23"),
         base.VersionInfo("2.1.0", "2021-08-09"),
@@ -82,6 +83,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.0", "Updated module to version 2.0.20")
     VERSION.changed("2.1.1", "Ensured to run in normal window mode")
     VERSION.changed("2.1.2", "Added base documentation")
+    VERSION.changed("2.1.3", "Make use of generic types for class attributes")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
@@ -97,7 +99,7 @@ class StreamCom(base.Component):
             ),
             base.Input(
                 "Reaches",
-                (attrib.Class("list[int]", 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
+                (attrib.Class(list[int], 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
                 self.default_observer,
                 description="""The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
                 that apply scenario-wide."""
@@ -120,27 +122,27 @@ class StreamCom(base.Component):
             ),
             base.Input(
                 "Species",
-                (attrib.Class("list[str]", 1), attrib.Unit(None, 1), attrib.Scales("other/species", 1)),
+                (attrib.Class(list[str], 1), attrib.Unit(None, 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
                 description="""The list of species simulated by StreamCom. See the scenario description for the 
                 available species."""
             ),
             base.Input(
                 "DominantRateConstantsForLm",
-                (attrib.Class("list[float]", 1), attrib.Unit("1/d", 1), attrib.Scales("other/species", 1)),
+                (attrib.Class(list[float], 1), attrib.Unit("1/d", 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
                 description="The dominant rate constants for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "ThresholdsForLethalEffects",
-                (attrib.Class("list[float]", 1), attrib.Unit("ng/l", 1), attrib.Scales("other/species", 1)),
+                (attrib.Class(list[float], 1), attrib.Unit("ng/l", 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
                 description="The thresholds for lethal effects for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "KillingRates",
                 (
-                    attrib.Class("list[float]", 1),
+                    attrib.Class(list[float], 1),
                     attrib.Unit("l/(ng*d)", 1),
                     attrib.Scales("other/species", 1)
                 ),
