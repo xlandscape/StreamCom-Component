@@ -17,15 +17,15 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-08-31.  
+version of this document is from 2021-09-17.  
 
 ### Built with
-* Landscape Model core version 1.5.10
+* Landscape Model core version 1.7
 * STREAM-com version 2.0.20 
 
 
 ## Getting Started
-The component can be used in any Landscape Model based on core version 1.5.10 or newer. See the Landscape Model
+The component can be used in any Landscape Model based on core version 1.7 or newer. See the Landscape Model
 core's `README` for general tips on how to add a component to a Landscape Model.
 
 ### Prerequisites
@@ -143,7 +143,7 @@ Values have to refer to the `global` scale.
 #### Reaches
 The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
 that apply scenario-wide.  
-`Reaches` expects its values to be of type `list[int]`.
+`Reaches` expects its values to be of type `list`.
 Values of the `Reaches` input may not have a physical unit.
 Values have to refer to the `space/reach` scale.
 
@@ -162,25 +162,25 @@ Values have to refer to the `time/hour, space/base_geometry` scale.
 #### Species
 The list of species simulated by StreamCom. See the scenario description for the 
 available species.  
-`Species` expects its values to be of type `list[str]`.
+`Species` expects its values to be of type `list`.
 Values of the `Species` input may not have a physical unit.
 Values have to refer to the `other/species` scale.
 
 #### DominantRateConstantsForLm
 The dominant rate constants for the GUTS functions applied to the simulated species.  
-`DominantRateConstantsForLm` expects its values to be of type `list[float]`.
+`DominantRateConstantsForLm` expects its values to be of type `list`.
 The physical unit of the `DominantRateConstantsForLm` input values is `1/d`.
 Values have to refer to the `other/species` scale.
 
 #### ThresholdsForLethalEffects
 The thresholds for lethal effects for the GUTS functions applied to the simulated species.  
-`ThresholdsForLethalEffects` expects its values to be of type `list[float]`.
+`ThresholdsForLethalEffects` expects its values to be of type `list`.
 The physical unit of the `ThresholdsForLethalEffects` input values is `ng/l`.
 Values have to refer to the `other/species` scale.
 
 #### KillingRates
 The killing rates for the GUTS functions applied to the simulated species.  
-`KillingRates` expects its values to be of type `list[float]`.
+`KillingRates` expects its values to be of type `list`.
 The physical unit of the `KillingRates` input values is `l/(ng*d)`.
 Values have to refer to the `other/species` scale.
 
