@@ -97,7 +97,7 @@ class StreamCom(base.Component):
             ),
             base.Input(
                 "Reaches",
-                (attrib.Class("list[int]", 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
+                (attrib.Class(list[int], 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
                 self.default_observer,
                 description="""The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
                 that apply scenario-wide."""
@@ -120,27 +120,27 @@ class StreamCom(base.Component):
             ),
             base.Input(
                 "Species",
-                (attrib.Class("list[str]", 1), attrib.Unit(None, 1), attrib.Scales("other/species", 1)),
+                (attrib.Class(list[str], 1), attrib.Unit(None, 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
                 description="""The list of species simulated by StreamCom. See the scenario description for the 
                 available species."""
             ),
             base.Input(
                 "DominantRateConstantsForLm",
-                (attrib.Class("list[float]", 1), attrib.Unit("1/d", 1), attrib.Scales("other/species", 1)),
+                (attrib.Class(list[float], 1), attrib.Unit("1/d", 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
                 description="The dominant rate constants for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "ThresholdsForLethalEffects",
-                (attrib.Class("list[float]", 1), attrib.Unit("ng/l", 1), attrib.Scales("other/species", 1)),
+                (attrib.Class(list[float], 1), attrib.Unit("ng/l", 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
                 description="The thresholds for lethal effects for the GUTS functions applied to the simulated species."
             ),
             base.Input(
                 "KillingRates",
                 (
-                    attrib.Class("list[float]", 1),
+                    attrib.Class(list[float], 1),
                     attrib.Unit("l/(ng*d)", 1),
                     attrib.Scales("other/species", 1)
                 ),
