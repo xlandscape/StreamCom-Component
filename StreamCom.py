@@ -16,8 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
-        base.VersionInfo("2.1.3", "2021-09-17"),
-        base.VersionInfo("2.1.3", "2021-09-17"),
+        base.VersionInfo("2.1.4", "2021-10-11"),
         base.VersionInfo("2.1.3", "2021-09-17"),
         base.VersionInfo("2.1.2", "2021-08-31"),
         base.VersionInfo("2.1.1", "2021-08-23"),
@@ -86,6 +85,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.1", "Ensured to run in normal window mode")
     VERSION.changed("2.1.2", "Added base documentation")
     VERSION.changed("2.1.3", "Make use of generic types for class attributes")
+    VERSION.changed("2.1.4", "Replaced legacy format strings by f-strings")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)

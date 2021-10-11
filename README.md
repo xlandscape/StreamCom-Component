@@ -17,19 +17,19 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-09-17.  
+version of this document is from 2021-10-11.  
 
 ### Built with
-* Landscape Model core version 1.7
+* Landscape Model core version 1.8
 * STREAM-com version 2.0.20 
 
 
 ## Getting Started
-The component can be used in any Landscape Model based on core version 1.7 or newer. See the Landscape Model
-core's `README` for general tips on how to add a component to a Landscape Model.
+The component can be used in any Landscape Model based on core version 1.8 or newer. See the Landscape
+Model core's `README` for general tips on how to add a component to a Landscape Model.
 
 ### Prerequisites
-A model developer that wants to add the `StreamCom` component to a Landscape Model needs to set up the general 
+A model developer that wants to add the `StreamCom1_StepsRiverNetwork` component to a Landscape Model needs to set up the general 
 structure for a Landscape Model first. See the Landscape Model core's `README` for details on how to do so.
 
 ### Installation
@@ -39,7 +39,7 @@ structure for a Landscape Model first. See the Landscape Model core's `README` f
 
 
 ## Usage
-The following gives a sample configuration of the `StreamCom` component. See [inputs](#inputs) and 
+The following gives a sample configuration of the `StreamCom1_StepsRiverNetwork` component. See [inputs](#inputs) and 
 [outputs](#outputs) for further details on the component's interface.
 ```xml
 <StreamCom1_StepsRiverNetwork module="StreamCom" class="StreamCom" enabled_expression="'$(RunStepsRiverNetwork)' ==
