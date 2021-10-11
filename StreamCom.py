@@ -16,6 +16,7 @@ class StreamCom(base.Component):
     """
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.4", "2021-10-11"),
         base.VersionInfo("2.1.3", "2021-09-17"),
         base.VersionInfo("2.1.2", "2021-08-31"),
         base.VersionInfo("2.1.1", "2021-08-23"),
@@ -84,6 +85,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.1", "Ensured to run in normal window mode")
     VERSION.changed("2.1.2", "Added base documentation")
     VERSION.changed("2.1.3", "Make use of generic types for class attributes")
+    VERSION.changed("2.1.4", "Replaced legacy format strings by f-strings")
 
     def __init__(self, name, observer, store):
         super(StreamCom, self).__init__(name, observer, store)
@@ -365,7 +367,7 @@ class StreamCom(base.Component):
         reach = self.inputs["Reach"].read().values
         indices = np.nonzero(reaches == int(reach))
         if len(indices[0]) != 1:
-            raise ValueError("Error finding reach " + str(reach))
+            raise ValueError(f"Error finding reach {reach}")
         index = int(indices[0])
         hours = self.inputs["Concentrations"].describe()["shape"][0]
         first_day = self.inputs["FirstDay"].read().values
@@ -373,9 +375,8 @@ class StreamCom(base.Component):
             f.write("Date\tConcentration [ng/L]\n")
             for day in range(int(hours / 24)):
                 data = self.inputs["Concentrations"].read(slices=(slice(day * 24, day * 24 + 24), index)).values
-                f.write("{}\t{}\n".format(
-                    datetime.datetime.strftime(first_day + datetime.timedelta(day), "%d/%m/%Y"), np.max(data))
-                )
+                f.write(
+                    f"{datetime.datetime.strftime(first_day + datetime.timedelta(day), '%d/%m/%Y')}\t{np.max(data)}\n")
         return
 
     def prepare_toxicological_parameters(self, parameter_file):
@@ -390,18 +391,25 @@ class StreamCom(base.Component):
             f.write("Concentration_unit\tµg/L\t[Unit of concentration for exposure and parameter values]\n")
             # noinspection SpellCheckingInspection
             f.write('PMoA\tfeeding\t"[feeding, maintenance costs, growht, oogenesis hazard]"\n\n\n\n')
-            f.write("Parameter\tDescription\tUnit\t{}\n".format("\t".join(self.inputs["Species"].read().values)))
-            f.write("kd\tdominant rate constant for Lm/L\t1/d\t{}\n".format(
-                "\t".join([str(x) for x in self.inputs["DominantRateConstantsForLm"].read().values])))
-            f.write("z\tthreshold for lethal effect\tunit of external concentration\t{}\n".format(
-                "\t".join([str(x) for x in self.inputs["ThresholdsForLethalEffects"].read().values])))
-            f.write("kk\tkilling rate\t1/d\t{}\n".format(
-                "\t".join([str(x) for x in self.inputs["KillingRates"].read().values])))
+            species = "\t".join(self.inputs["Species"].read().values)
+            f.write(f"Parameter\tDescription\tUnit\t{species}\n")
+            dominant_rate_constants_for_lm = "\t".join(
+                [str(x) for x in self.inputs["DominantRateConstantsForLm"].read().values])
+            f.write(f"kd\tdominant rate constant for Lm/L\t1/d\t{dominant_rate_constants_for_lm}\n")
+            thresholds_for_lethal_effects = "\t".join(
+                [str(x) for x in self.inputs["ThresholdsForLethalEffects"].read().values])
+            f.write(
+                f"z\tthreshold for lethal effect\tunit of external concentration\t{thresholds_for_lethal_effects}\n")
+            killing_rates = "\t".join([str(x) for x in self.inputs["KillingRates"].read().values])
+            f.write(f"kk\tkilling rate\t1/d\t{killing_rates}\n")
+            thresholds_for_sub_lethal_effects = "\t".join(["1000" for _ in self.inputs["KillingRates"].read().values])
             # noinspection SpellCheckingInspection
-            f.write("c0\tthreshold for sublethal effect\tunit of external concentration\t{}\n".format(
-                "\t".join(["1000" for _ in self.inputs["KillingRates"].read().values])))
-            f.write("cT\ttolerance concentration\tunit of external concentration\t{}\n".format(
-                "\t".join(["1" for _ in self.inputs["KillingRates"].read().values])))
+            f.write(
+                "c0\tthreshold for sublethal effect\tunit of external concentration\t"
+                f"{thresholds_for_sub_lethal_effects}\n"
+            )
+            tolerance_concentrations = "\t".join(['1' for _ in self.inputs["KillingRates"].read().values])
+            f.write(f"cT\ttolerance concentration\tunit of external concentration\t{tolerance_concentrations}\n")
         return
 
     def prepare_site_information_input(self, site_information_file):
@@ -433,7 +441,7 @@ class StreamCom(base.Component):
         for row in rows_to_remove:
             data.remove(row)
         for species in selected_species:
-            self.default_observer.write_message(2, "No parameters found for " + species)
+            self.default_observer.write_message(2, f"No parameters found for {species}")
         species_database.write(species_file)
         return
 
@@ -519,7 +527,7 @@ class StreamCom(base.Component):
                         values[x_values[i], y_values[i], run] = results[run][i]
                 self.outputs[output].set_values(values, scales="space/x_5dm, space/y_5dm, other/runs")
             else:
-                self.default_observer.write_message(2, "Unknown output: " + output)
+                self.default_observer.write_message(2, f"Unknown output: {output}")
         return
 
     def write_settings(self, settings_file):
@@ -529,48 +537,45 @@ class StreamCom(base.Component):
         :return: Nothing.
         """
         with open(settings_file, "w") as f:
-            f.write("Threshold population size for super individuals [#],{}\n".format(
-                self.inputs["ThresholdPopulationSizeForSuperIndividuals"].read().values))
+            f.write(
+                "Threshold population size for super individuals [#],"
+                f"{self.inputs['ThresholdPopulationSizeForSuperIndividuals'].read().values}\n"
+            )
             # noinspection SpellCheckingInspection
-            f.write("Number of siblings per super indiviual [#],{}\n".format(
-                self.inputs["NumberOfSiblingsPerSuperIndividual"].read().values))
-            f.write("Maximum periphyton growth rate [1/d],{}\n".format(
-                self.inputs["MaximumPeriphytonGrowthRate"].read().values))
+            f.write(
+                "Number of siblings per super indiviual [#],"
+                f"{self.inputs['NumberOfSiblingsPerSuperIndividual'].read().values}\n"
+            )
+            f.write(
+                f"Maximum periphyton growth rate [1/d],{self.inputs['MaximumPeriphytonGrowthRate'].read().values}\n")
             # noinspection SpellCheckingInspection
-            f.write("Periphyton carying capacity [g/m^2],{}\n".format(
-                self.inputs["PeriphytonCarryingCapacity"].read().values))
-            f.write("Periphyton Arrhenius temperature [K],{}\n".format(
-                self.inputs["PeriphytonArrheniusTemperature"].read().values))
-            f.write("Initial leaf litter density [g/m^2],{}\n".format(
-                self.inputs["InitialLeafLitterDensity"].read().values))
-            f.write("Leaf litter energy density [J/g],{}\n".format(
-                self.inputs["LeafLitterEnergyDensity"].read().values))
-            f.write("Day of year for litter addition [d],{}\n".format(
-                self.inputs["DayOfYearForLitterAddition"].read().values))
-            f.write("C-POM settlement rate [1/d],{}\n".format(
-                self.inputs["C-PomSettlementRate"].read().values))
-            f.write("Maximum velocity class for C-POM addition [1...6],{}\n".format(
-                self.inputs["MaximumVelocityClassForC-PomAddition"].read().values))
-            f.write("Settlement rate for F-POM and animal remains [1/d],{}\n".format(
-                self.inputs["SettlementRateForFPomAndAnimalRemains"].read().values))
-            f.write("Initial F-POM density [J/m^2],{}\n".format(
-                self.inputs["InitialF-PomDensity"].read().values))
-            f.write("Initial S-POM density [J/m^2],{}\n".format(
-                self.inputs["InitialS-PomDensity"].read().values))
-            f.write("Fraction of S-POM available to filter feeders [-],{}\n".format(
-                self.inputs["FractionOfS-PomAvailableToFilterFeeders"].read().values))
-            f.write("Periphyton energy density [J/g],{}\n".format(
-                self.inputs["PeriphytonEnergyDensity"].read().values))
-            f.write("use population density [#/m^2] as output,{}\n".format(
-                self.inputs["UsePopulationDensity"].read().values))
-            f.write("save population size,{}\n".format(
-                self.inputs["SavePopulationSize"].read().values))
-            f.write("save trait size,{}\n".format(
-                self.inputs["SaveTraitSize"].read().values))
-            f.write("save population distribution,{}\n".format(
-                self.inputs["SavePopulationDistribution"].read().values))
-            f.write("save trait distribution,{}\n".format(
-                self.inputs["SaveTraitDistribution"].read().values))
+            f.write(f"Periphyton carying capacity [g/m^2],{self.inputs['PeriphytonCarryingCapacity'].read().values}\n")
+            f.write(
+                f"Periphyton Arrhenius temperature [K],{self.inputs['PeriphytonArrheniusTemperature'].read().values}\n")
+            f.write(f"Initial leaf litter density [g/m^2],{self.inputs['InitialLeafLitterDensity'].read().values}\n")
+            f.write(f"Leaf litter energy density [J/g],{self.inputs['LeafLitterEnergyDensity'].read().values}\n")
+            f.write(f"Day of year for litter addition [d],{self.inputs['DayOfYearForLitterAddition'].read().values}\n")
+            f.write(f"C-POM settlement rate [1/d],{self.inputs['C-PomSettlementRate'].read().values}\n")
+            f.write(
+                "Maximum velocity class for C-POM addition [1...6],"
+                f"{self.inputs['MaximumVelocityClassForC-PomAddition'].read().values}\n"
+            )
+            f.write(
+                "Settlement rate for F-POM and animal remains [1/d],"
+                f"{self.inputs['SettlementRateForFPomAndAnimalRemains'].read().values}\n"
+            )
+            f.write(f"Initial F-POM density [J/m^2],{self.inputs['InitialF-PomDensity'].read().values}\n")
+            f.write(f"Initial S-POM density [J/m^2],{self.inputs['InitialS-PomDensity'].read().values}\n")
+            f.write(
+                "Fraction of S-POM available to filter feeders [-],"
+                f"{self.inputs['FractionOfS-PomAvailableToFilterFeeders'].read().values}\n"
+            )
+            f.write(f"Periphyton energy density [J/g],{self.inputs['PeriphytonEnergyDensity'].read().values}\n")
+            f.write(f"use population density [#/m^2] as output,{self.inputs['UsePopulationDensity'].read().values}\n")
+            f.write(f"save population size,{self.inputs['SavePopulationSize'].read().values}\n")
+            f.write(f"save trait size,{self.inputs['SaveTraitSize'].read().values}\n")
+            f.write(f"save population distribution,{self.inputs['SavePopulationDistribution'].read().values}\n")
+            f.write(f"save trait distribution,{self.inputs['SaveTraitDistribution'].read().values}\n")
         return
 
     def prepare_biomass_input(self, biomass_file):
