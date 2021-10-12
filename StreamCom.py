@@ -1,6 +1,4 @@
-"""
-Class definition of the StreamCom Landscape Model component.
-"""
+"""Class definition of the StreamCom Landscape Model component."""
 import base
 import os
 import shutil
@@ -11,11 +9,10 @@ import attrib
 
 
 class StreamCom(base.Component):
-    """
-    Encapsulates the StreamCom module for the Landscape Model.
-    """
+    """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.1.5", "2021-10-12"),
         base.VersionInfo("2.1.4", "2021-10-11"),
         base.VersionInfo("2.1.3", "2021-09-17"),
         base.VersionInfo("2.1.2", "2021-08-31"),
@@ -81,13 +78,22 @@ class StreamCom(base.Component):
     VERSION.changed(
         "2.0.4", "Increased portability by shipping Microsoft's data access components with Landscape Model component")
     VERSION.added("2.0.5", "Support of multiple module runs")
-    VERSION.changed("2.1.0", "Updated module to version 2.0.20")
+    VERSION.changed("2.1.0", "Updated the module to version 2.0.20")
     VERSION.changed("2.1.1", "Ensured to run in normal window mode")
     VERSION.changed("2.1.2", "Added base documentation")
     VERSION.changed("2.1.3", "Make use of generic types for class attributes")
     VERSION.changed("2.1.4", "Replaced legacy format strings by f-strings")
+    VERSION.changed("2.1.5", "Switched to Google docstring style")
 
     def __init__(self, name, observer, store):
+        """
+        Initializes a StreamCom component.
+
+        Args:
+            name: The name of the component.
+            observer: The default observer of the component.
+            store: The default store of the component.
+        """
         super(StreamCom, self).__init__(name, observer, store)
         # noinspection SpellCheckingInspection
         self._module = base.Module("STREAM-com", "2.0.20")
@@ -334,12 +340,13 @@ class StreamCom(base.Component):
         ])
         self._store = store
         self._selectedSpecies = []
-        return
 
     def run(self):
         """
         Runs the component.
-        :return: Nothing.
+
+        Returns:
+            Nothing.
         """
         processing_path = self.inputs["ProcessingPath"].read().values
         input_path = os.path.join(processing_path, "in")
@@ -355,13 +362,16 @@ class StreamCom(base.Component):
         self.prepare_biomass_input(os.path.join(input_path, "biomass.txt"))
         self.run_module(input_path, output_path)
         self.read_outputs(output_path)
-        return
 
     def prepare_chemical_input(self, chemical_file):
         """
         Prepares the module's chemical input.
-        :param chemical_file: The file path of the chemical input.
-        :return: Nothing.
+
+        Args:
+            chemical_file: The file path of the chemical input.
+
+        Returns:
+            Nothing.
         """
         reaches = np.asarray(self.inputs["Reaches"].read().values, np.int)
         reach = self.inputs["Reach"].read().values
@@ -377,13 +387,16 @@ class StreamCom(base.Component):
                 data = self.inputs["Concentrations"].read(slices=(slice(day * 24, day * 24 + 24), index)).values
                 f.write(
                     f"{datetime.datetime.strftime(first_day + datetime.timedelta(day), '%d/%m/%Y')}\t{np.max(data)}\n")
-        return
 
     def prepare_toxicological_parameters(self, parameter_file):
         """
         Prepares the toxicological parameters.
-        :param parameter_file: The file path of the toxicological parameter file.
-        :return: Nothing.
+
+        Args:
+            parameter_file: The file path of the toxicological parameter file.
+
+        Returns:
+            Nothing.
         """
         with open(parameter_file, "w") as f:
             f.write("Information\tValue\tComment\n")
@@ -404,28 +417,35 @@ class StreamCom(base.Component):
             f.write(f"kk\tkilling rate\t1/d\t{killing_rates}\n")
             thresholds_for_sub_lethal_effects = "\t".join(["1000" for _ in self.inputs["KillingRates"].read().values])
             # noinspection SpellCheckingInspection
+            # noinspection GrazieInspection
             f.write(
                 "c0\tthreshold for sublethal effect\tunit of external concentration\t"
                 f"{thresholds_for_sub_lethal_effects}\n"
             )
             tolerance_concentrations = "\t".join(['1' for _ in self.inputs["KillingRates"].read().values])
             f.write(f"cT\ttolerance concentration\tunit of external concentration\t{tolerance_concentrations}\n")
-        return
 
     def prepare_site_information_input(self, site_information_file):
         """
         Prepares the module's site information.
-        :param site_information_file: The file path of the site information.
-        :return: Nothing.
+
+        Args:
+            site_information_file: The file path of the site information.
+
+        Returns:
+            Nothing.
         """
         shutil.copyfile(self.inputs["SiteInformation"].read().values, site_information_file)
-        return
 
     def prepare_species_input(self, species_file):
         """
         Prepares the module's species input.
-        :param species_file: The file pah of the species input.
-        :return: Nothing.
+
+        Args:
+            species_file: The file pah of the species input.
+
+        Returns:
+            Nothing.
         """
         selected_species = self.inputs["Species"].read().values
         species_database = xml.etree.ElementTree.parse(self.inputs["SpeciesParameters"].read().values)
@@ -443,24 +463,30 @@ class StreamCom(base.Component):
         for species in selected_species:
             self.default_observer.write_message(2, f"No parameters found for {species}")
         species_database.write(species_file)
-        return
 
     def prepare_water_temperature_input(self, input_path):
         """
         Prepares the water temperature input.
-        :param input_path: File path of the water temperature input.
-        :return: Nothing.
+
+        Args:
+            input_path: File path of the water temperature input.
+
+        Returns:
+            Nothing.
         """
         input_file = self.inputs["WaterTemperature"].read().values
         shutil.copyfile(input_file, input_path)
-        return
 
     def run_module(self, input_path, output_path):
         """
         Runs the module.
-        :param input_path: The file path containing the module's input files.
-        :param output_path: The file path for the module's outputs.
-        :return: Nothing.
+
+        Args:
+            input_path: The file path containing the module's input files.
+            output_path: The file path for the module's outputs.
+
+        Returns:
+            Nothing.
         """
         number_days = int((self.inputs["LastDay"].read().values - self.inputs["FirstDay"].read().values).days) + 1
         # noinspection SpellCheckingInspection
@@ -490,13 +516,16 @@ class StreamCom(base.Component):
             {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")},
             False
         )
-        return
 
     def read_outputs(self, output_path):
         """
-        Imports he module's outputs into the Landscape Model.
-        :param output_path: The file path of the module's outputs.
-        :return: Nothing.
+        Imports the module's outputs into the Landscape Model.
+
+        Args:
+            output_path: The file path of the module's outputs.
+
+        Returns:
+            Nothing.
         """
         number_runs = self.inputs["NumberRuns"].read().values
         for output in os.listdir(output_path):
@@ -528,13 +557,16 @@ class StreamCom(base.Component):
                 self.outputs[output].set_values(values, scales="space/x_5dm, space/y_5dm, other/runs")
             else:
                 self.default_observer.write_message(2, f"Unknown output: {output}")
-        return
 
     def write_settings(self, settings_file):
         """
         Writes the StreamCom parameterization file.
-        :param settings_file: The file path of the parameterization file.
-        :return: Nothing.
+
+        Args:
+            settings_file: The file path of the parameterization file.
+
+        Returns:
+            Nothing.
         """
         with open(settings_file, "w") as f:
             f.write(
@@ -576,13 +608,15 @@ class StreamCom(base.Component):
             f.write(f"save trait size,{self.inputs['SaveTraitSize'].read().values}\n")
             f.write(f"save population distribution,{self.inputs['SavePopulationDistribution'].read().values}\n")
             f.write(f"save trait distribution,{self.inputs['SaveTraitDistribution'].read().values}\n")
-        return
 
     def prepare_biomass_input(self, biomass_file):
         """
         Prepares the module's biomass information.
-        :param biomass_file: The file path of the site information.
-        :return: Nothing.
+
+        Args:
+            biomass_file: The file path of the site information.
+
+        Returns:
+            Nothing.
         """
         shutil.copyfile(self.inputs["Biomass"].read().values, biomass_file)
-        return
