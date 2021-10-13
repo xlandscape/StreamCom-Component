@@ -12,6 +12,7 @@ class StreamCom(base.Component):
     """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.2.0", "2021-10-13"),
         base.VersionInfo("2.1.5", "2021-10-12"),
         base.VersionInfo("2.1.4", "2021-10-11"),
         base.VersionInfo("2.1.3", "2021-09-17"),
@@ -47,6 +48,7 @@ class StreamCom(base.Component):
     # ACKNOWLEDGEMENTS
     VERSION.acknowledgements.extend((
         "[NumPy](https://numpy.org)",
+        "[StreamCom](https://gaiac-eco.de/oekotoxikologie/effektmodellierung/)"
     ))
 
     # ROADMAP
@@ -84,6 +86,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.3", "Make use of generic types for class attributes")
     VERSION.changed("2.1.4", "Replaced legacy format strings by f-strings")
     VERSION.changed("2.1.5", "Switched to Google docstring style")
+    VERSION.changed("2.2.0", "Updated the module to version 2.0.21")
 
     def __init__(self, name, observer, store):
         """
