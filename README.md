@@ -17,11 +17,11 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-10-12.  
+version of this document is from 2021-10-13.  
 
 ### Built with
 * Landscape Model core version 1.9
-* STREAM-com version 2.0.20 
+* STREAM-com version 2.0.21 
 
 
 ## Getting Started
@@ -394,3 +394,4 @@ Jana Gerhard (module) - gerhard@gaiac-eco.de
 
 ## Acknowledgements
 * [NumPy](https://numpy.org)  
+* [StreamCom](https://gaiac-eco.de/oekotoxikologie/effektmodellierung/)  
