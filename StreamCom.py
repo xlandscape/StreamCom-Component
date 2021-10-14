@@ -12,6 +12,7 @@ class StreamCom(base.Component):
     """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.2.1", "2021-10-14"),
         base.VersionInfo("2.2.0", "2021-10-13"),
         base.VersionInfo("2.1.5", "2021-10-12"),
         base.VersionInfo("2.1.4", "2021-10-11"),
@@ -55,8 +56,6 @@ class StreamCom(base.Component):
     VERSION.roadmap.extend((
         """Start module GUI in background
         ([#1](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/1))""",
-        """Unknown output: report.txt
-        ([#3](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/3))""",
     ))
 
     # CHANGELOG
@@ -87,6 +86,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.4", "Replaced legacy format strings by f-strings")
     VERSION.changed("2.1.5", "Switched to Google docstring style")
     VERSION.changed("2.2.0", "Updated the module to version 2.0.21")
+    VERSION.changed("2.2.1", "Usage of report.txt as indicator for successful StreamCom runs")
 
     def __init__(self, name, observer, store):
         """
@@ -531,6 +531,7 @@ class StreamCom(base.Component):
             Nothing.
         """
         number_runs = self.inputs["NumberRuns"].read().values
+        run_successful = False
         for output in os.listdir(output_path):
             self.outputs.append(base.Output(output, self._store, self))
             with open(os.path.join(output_path, output)) as f:
@@ -558,8 +559,12 @@ class StreamCom(base.Component):
                     for i in range(len(results[run])):
                         values[x_values[i], y_values[i], run] = results[run][i]
                 self.outputs[output].set_values(values, scales="space/x_5dm, space/y_5dm, other/runs")
+            elif output == "report.txt":
+                run_successful = True
             else:
                 self.default_observer.write_message(2, f"Unknown output: {output}")
+        if run_successful is False:
+            self.default_observer.write_message(1, "StreamCom run was not successful, no report.txt was found")
 
     def write_settings(self, settings_file):
         """
