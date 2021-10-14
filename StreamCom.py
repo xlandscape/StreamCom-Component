@@ -531,6 +531,7 @@ class StreamCom(base.Component):
             Nothing.
         """
         number_runs = self.inputs["NumberRuns"].read().values
+        run_successful = False
         for output in os.listdir(output_path):
             self.outputs.append(base.Output(output, self._store, self))
             with open(os.path.join(output_path, output)) as f:
@@ -558,8 +559,12 @@ class StreamCom(base.Component):
                     for i in range(len(results[run])):
                         values[x_values[i], y_values[i], run] = results[run][i]
                 self.outputs[output].set_values(values, scales="space/x_5dm, space/y_5dm, other/runs")
+            elif output == "report.txt":
+                run_successful = True
             else:
                 self.default_observer.write_message(2, f"Unknown output: {output}")
+        if run_successful is False:
+            self.default_observer.write_message(1, "StreamCom run was not successful, no report.txt was found")
 
     def write_settings(self, settings_file):
         """
