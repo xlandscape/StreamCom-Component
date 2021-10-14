@@ -17,7 +17,7 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-10-13.  
+version of this document is from 2021-10-14.  
 
 ### Built with
 * Landscape Model core version 1.9
@@ -372,8 +372,6 @@ Values have to refer to the `global` scale.
 The following changes will be part of future `StreamCom` versions:
 * Start module GUI in background
 ([#1](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/1))
-* Unknown output: report.txt
-([#3](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/3))
 
 
 ## Contributing

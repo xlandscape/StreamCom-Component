@@ -1,5 +1,15 @@
 # Changelog
-This is the changelog for the StreamCom component. It was automatically created on 2021-10-13.
+This is the changelog for the StreamCom component. It was automatically created on 2021-10-14.
+
+## [2.2.1] - 2021-10-14
+
+### Added
+
+### Changed
+- Usage of report.txt as indicator for successful StreamCom runs
+
+### Fixed
+
 
 ## [2.2] - 2021-10-13
 

@@ -12,6 +12,7 @@ class StreamCom(base.Component):
     """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.2.1", "2021-10-14"),
         base.VersionInfo("2.2.0", "2021-10-13"),
         base.VersionInfo("2.1.5", "2021-10-12"),
         base.VersionInfo("2.1.4", "2021-10-11"),
@@ -55,8 +56,6 @@ class StreamCom(base.Component):
     VERSION.roadmap.extend((
         """Start module GUI in background
         ([#1](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/1))""",
-        """Unknown output: report.txt
-        ([#3](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/3))""",
     ))
 
     # CHANGELOG
@@ -87,6 +86,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.4", "Replaced legacy format strings by f-strings")
     VERSION.changed("2.1.5", "Switched to Google docstring style")
     VERSION.changed("2.2.0", "Updated the module to version 2.0.21")
+    VERSION.changed("2.2.1", "Usage of report.txt as indicator for successful StreamCom runs")
 
     def __init__(self, name, observer, store):
         """
