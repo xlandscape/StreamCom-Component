@@ -1,5 +1,15 @@
 # Changelog
-This is the changelog for the StreamCom component. It was automatically created on 2021-10-14.
+This is the changelog for the StreamCom component. It was automatically created on 2021-10-19.
+
+## [2.2.2] - 2021-10-14
+
+### Added
+
+### Changed
+- Specified working directory for module
+
+### Fixed
+
 
 ## [2.2.1] - 2021-10-14
 

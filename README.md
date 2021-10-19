@@ -17,15 +17,15 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-10-14.  
+version of this document is from 2021-10-19.  
 
 ### Built with
-* Landscape Model core version 1.9
+* Landscape Model core version 1.9.3
 * STREAM-com version 2.0.21 
 
 
 ## Getting Started
-The component can be used in any Landscape Model based on core version 1.9 or newer. See the Landscape
+The component can be used in any Landscape Model based on core version 1.9.3 or newer. See the Landscape
 Model core's `README` for general tips on how to add a component to a Landscape Model.
 
 ### Prerequisites
