@@ -514,7 +514,7 @@ class StreamCom(base.Component):
                 "--start_biomass",
                 self.inputs["StartBiomass"].read().values
             ),
-            None,
+            output_path,
             self.default_observer,
             {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")},
             False
