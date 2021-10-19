@@ -12,6 +12,7 @@ class StreamCom(base.Component):
     """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.2.2", "2021-10-14"),
         base.VersionInfo("2.2.1", "2021-10-14"),
         base.VersionInfo("2.2.0", "2021-10-13"),
         base.VersionInfo("2.1.5", "2021-10-12"),
@@ -87,6 +88,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.1.5", "Switched to Google docstring style")
     VERSION.changed("2.2.0", "Updated the module to version 2.0.21")
     VERSION.changed("2.2.1", "Usage of report.txt as indicator for successful StreamCom runs")
+    VERSION.changed("2.2.2", "Specified working directory for module")
 
     def __init__(self, name, observer, store):
         """
@@ -514,7 +516,7 @@ class StreamCom(base.Component):
                 "--start_biomass",
                 self.inputs["StartBiomass"].read().values
             ),
-            None,
+            output_path,
             self.default_observer,
             {"CommonProgramFiles(x86)": os.path.join(os.path.dirname(__file__), "dac")},
             False
