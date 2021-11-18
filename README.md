@@ -17,15 +17,15 @@
 ## About the project
 Encapsulates the StreamCom module for the Landscape Model.  
 This is an automatically generated documentation based on the available code and in-line documentation. The current
-version of this document is from 2021-10-19.  
+version of this document is from 2021-11-18.  
 
 ### Built with
-* Landscape Model core version 1.9.3
+* Landscape Model core version 1.10
 * STREAM-com version 2.0.21 
 
 
 ## Getting Started
-The component can be used in any Landscape Model based on core version 1.9.3 or newer. See the Landscape
+The component can be used in any Landscape Model based on core version 1.10 or newer. See the Landscape
 Model core's `README` for general tips on how to add a component to a Landscape Model.
 
 ### Prerequisites
@@ -44,91 +44,111 @@ The following gives a sample configuration of the `StreamCom` component. See [in
 ```xml
 <StreamCom1_StepsRiverNetwork module="StreamCom" class="StreamCom" enabled_expression="'$(RunStepsRiverNetwork)' ==
 'true' and '$(RunStreamCom)' == 'true' and                 '$(StreamComReach1)' != ''">
-<ProcessingPath>$(_MCS_BASE_DIR_)\$(_MC_NAME_)\processing\effect\com_steps_1</ProcessingPath>
-    <Reaches>
-<FromOutput component="StepsRiverNetwork" output="Reaches" />
-    </Reaches>
+    <ProcessingPath
+scales="global">
+        $(_MCS_BASE_DIR_)\$(_MC_NAME_)\processing\effect\com_steps_1
+    </ProcessingPath>
     <Reach
-type="int">$(StreamComReach1)</Reach>
+type="int" scales="global">$(StreamComReach1)</Reach>
     <Concentrations>
-        <FromOutput component="StepsRiverNetwork"
-output="PEC_SW" />
+        <FromOutput
+component="StepsRiverNetwork" output="PEC_SW" />
     </Concentrations>
     <Species type="list[str]"
-scales="other/species">$(Species1)|$(Species2)|$(Species3)</Species>
-    <DominantRateConstantsForLm type="list[float]"
-scales="other/species" unit="1/d">
-        $(Species1DominantRateConstantSD) $(Species2DominantRateConstantSD)
-$(Species3DominantRateConstantSD)
+scales="other/species" element_names="StreamCom1_StepsRiverNetwork/Species">
+        $(Species1)|$(Species2)|$(Species3)
+</Species>
+    <DominantRateConstantsForLm type="list[float]" scales="other/species" unit="1/d"
+element_names="StreamCom1_StepsRiverNetwork/Species">
+        $(Species1DominantRateConstantSD)
+$(Species2DominantRateConstantSD) $(Species3DominantRateConstantSD)
     </DominantRateConstantsForLm>
-    <ThresholdsForLethalEffects type="list[float]"
-scales="other/species" unit="ng/l">
-        $(Species1ThresholdConcentrationSD) $(Species2ThresholdConcentrationSD)
-$(Species3ThresholdConcentrationSD)
+<ThresholdsForLethalEffects type="list[float]" scales="other/species" unit="ng/l"
+element_names="StreamCom1_StepsRiverNetwork/Species">
+        $(Species1ThresholdConcentrationSD)
+$(Species2ThresholdConcentrationSD)
+        $(Species3ThresholdConcentrationSD)
     </ThresholdsForLethalEffects>
-    <KillingRates type="list[float]"
-scales="other/species" unit="l/(ng*h)">
+<KillingRates type="list[float]" scales="other/species" unit="l/(ng*h)"
+element_names="StreamCom1_StepsRiverNetwork/Species">
         $(Species1KillingRateSD) $(Species2KillingRateSD)
 $(Species3KillingRateSD)
     </KillingRates>
-    <SiteInformation>$(:SiteInformation)</SiteInformation>
-<SpeciesParameters>$(:SpeciesParameters)</SpeciesParameters>
-<WaterTemperature>$(:WaterTemperature)</WaterTemperature>
-    <Site>Niers_Peutenweg</Site>
+    <SiteInformation scales="global">$(:SiteInformation)</SiteInformation>
+<SpeciesParameters scales="global">$(:SpeciesParameters)</SpeciesParameters>
+    <WaterTemperature
+scales="global">$(:WaterTemperature)</WaterTemperature>
+    <Site scales="global">Niers_Peutenweg</Site>
     <FirstDay
-type="date">$(SimulationStart)</FirstDay>
-    <LastDay type="date">$(SimulationEnd)</LastDay>
-<UseSubLethalToxEffects type="bool">$(UseSubLethalToxEffects)</UseSubLethalToxEffects>
-<ThresholdPopulationSizeForSuperIndividuals type="int" unit="1">
+type="date" scales="global">$(SimulationStart)</FirstDay>
+    <LastDay type="date"
+scales="global">$(SimulationEnd)</LastDay>
+    <UseSubLethalToxEffects type="bool"
+scales="global">$(UseSubLethalToxEffects)</UseSubLethalToxEffects>
+    <ThresholdPopulationSizeForSuperIndividuals
+type="int" unit="1" scales="global">
         $(ThresholdPopulationSizeForSuperIndividuals)
 </ThresholdPopulationSizeForSuperIndividuals>
-    <NumberOfSiblingsPerSuperIndividual type="int" unit="1">
-$(NumberOfSiblingsPerSuperIndividual)
+    <NumberOfSiblingsPerSuperIndividual type="int" unit="1"
+scales="global">
+        $(NumberOfSiblingsPerSuperIndividual)
     </NumberOfSiblingsPerSuperIndividual>
-    <MaximumPeriphytonGrowthRate
-type="float" unit="1/d">
+<MaximumPeriphytonGrowthRate type="float" unit="1/d" scales="global">
         $(MaximumPeriphytonGrowthRate)
-    </MaximumPeriphytonGrowthRate>
-<PeriphytonCarryingCapacity type="float" unit="g/m&#178;">
-        $(PeriphytonCarryingCapacity)
-</PeriphytonCarryingCapacity>
-    <PeriphytonArrheniusTemperature type="float" unit="K">
-$(PeriphytonArrheniusTemperature)
+</MaximumPeriphytonGrowthRate>
+    <PeriphytonCarryingCapacity type="float" unit="g/m&#178;" scales="global">
+$(PeriphytonCarryingCapacity)
+    </PeriphytonCarryingCapacity>
+    <PeriphytonArrheniusTemperature type="float"
+unit="K" scales="global">
+        $(PeriphytonArrheniusTemperature)
     </PeriphytonArrheniusTemperature>
-    <InitialLeafLitterDensity type="float"
-unit="g/m&#178;">$(InitialLeafLitterDensity)</InitialLeafLitterDensity>
-    <LeafLitterEnergyDensity type="float"
-unit="J/g">$(LeafLitterEnergyDensity)</LeafLitterEnergyDensity>
-    <DayOfYearForLitterAddition type="int"
-unit="d">$(DayOfYearForLitterAddition)</DayOfYearForLitterAddition>
-    <C-PomSettlementRate type="float"
-unit="1/d">$(C-PomSettlementRate)</C-PomSettlementRate>
-    <MaximumVelocityClassForC-PomAddition type="int">
-$(MaximumVelocityClassForC-PomAddition)
-    </MaximumVelocityClassForC-PomAddition>
-<SettlementRateForFPomAndAnimalRemains type="float" unit="1/d">
+<InitialLeafLitterDensity type="float" unit="g/m&#178;" scales="global">
+        $(InitialLeafLitterDensity)
+</InitialLeafLitterDensity>
+    <LeafLitterEnergyDensity type="float" unit="J/g" scales="global">
+$(LeafLitterEnergyDensity)
+    </LeafLitterEnergyDensity>
+    <DayOfYearForLitterAddition type="int" unit="d"
+scales="global">
+        $(DayOfYearForLitterAddition)
+    </DayOfYearForLitterAddition>
+    <C-PomSettlementRate
+type="float" unit="1/d" scales="global">
+        $(C-PomSettlementRate)
+    </C-PomSettlementRate>
+<MaximumVelocityClassForC-PomAddition type="int" scales="global">
+        $(MaximumVelocityClassForC-PomAddition)
+</MaximumVelocityClassForC-PomAddition>
+    <SettlementRateForFPomAndAnimalRemains type="float" unit="1/d"
+scales="global">
         $(SettlementRateForFPomAndAnimalRemains)
-</SettlementRateForFPomAndAnimalRemains>
-    <InitialF-PomDensity type="float" unit="J/m&#178;">$(InitialF-
-PomDensity)</InitialF-PomDensity>
-    <InitialS-PomDensity type="float" unit="J/m&#178;">$(InitialS-
-PomDensity)</InitialS-PomDensity>
-    <FractionOfS-PomAvailableToFilterFeeders type="float" unit="1">
-$(FractionOfS-PomAvailableToFilterFeeders)
+    </SettlementRateForFPomAndAnimalRemains>
+<InitialF-PomDensity type="float" unit="J/m&#178;" scales="global">$(InitialF-PomDensity)</InitialF-PomDensity>
+<InitialS-PomDensity type="float" unit="J/m&#178;" scales="global">$(InitialS-PomDensity)</InitialS-PomDensity>
+<FractionOfS-PomAvailableToFilterFeeders type="float" unit="1" scales="global">
+        $(FractionOfS-
+PomAvailableToFilterFeeders)
     </FractionOfS-PomAvailableToFilterFeeders>
-    <PeriphytonEnergyDensity
-type="float" unit="J/g">$(PeriphytonEnergyDensity)</PeriphytonEnergyDensity>
+    <PeriphytonEnergyDensity type="float"
+unit="J/g" scales="global">
+        $(PeriphytonEnergyDensity)
+    </PeriphytonEnergyDensity>
     <UsePopulationDensity
-type="bool">$(UsePopulationDensity)</UsePopulationDensity>
-    <SavePopulationSize
-type="bool">$(SavePopulationSize)</SavePopulationSize>
-    <SaveTraitSize type="bool">$(SaveTraitSize)</SaveTraitSize>
-<SavePopulationDistribution type="bool">$(SavePopulationDistribution)</SavePopulationDistribution>
-<SaveTraitDistribution type="bool">$(SaveTraitDistribution)</SaveTraitDistribution>
-    <Biomass>$(:Biomass)</Biomass>
-<StartBiomass>$(StreamComStartBiomass)</StartBiomass>
-    <NumberRuns type="int"
-unit="1">$(NumberStreamComRuns)</NumberRuns>
+type="bool" scales="global">$(UsePopulationDensity)</UsePopulationDensity>
+    <SavePopulationSize type="bool"
+scales="global">$(SavePopulationSize)</SavePopulationSize>
+    <SaveTraitSize type="bool"
+scales="global">$(SaveTraitSize)</SaveTraitSize>
+    <SavePopulationDistribution type="bool" scales="global">
+$(SavePopulationDistribution)
+    </SavePopulationDistribution>
+    <SaveTraitDistribution type="bool"
+scales="global">$(SaveTraitDistribution)</SaveTraitDistribution>
+    <Biomass scales="global">$(:Biomass)</Biomass>
+<StartBiomass scales="global">$(StreamComStartBiomass)</StartBiomass>
+    <NumberRuns type="int" unit="1"
+scales="global">$(NumberStreamComRuns)</NumberRuns>
 </StreamCom1_StepsRiverNetwork>
 ```
 
@@ -139,13 +159,6 @@ or generated as module outputs.
 `ProcessingPath` expects its values to be of type `str`.
 Values of the `ProcessingPath` input may not have a physical unit.
 Values have to refer to the `global` scale.
-
-#### Reaches
-The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
-that apply scenario-wide.  
-`Reaches` expects its values to be of type `list`.
-Values of the `Reaches` input may not have a physical unit.
-Values have to refer to the `space/reach` scale.
 
 #### Reach
 The numerical identifier of the reach that is selected for the StreamCom simulation.  
