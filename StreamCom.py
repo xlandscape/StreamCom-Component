@@ -12,6 +12,7 @@ class StreamCom(base.Component):
     """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.2.3", "2021-11-18"),
         base.VersionInfo("2.2.2", "2021-10-14"),
         base.VersionInfo("2.2.1", "2021-10-14"),
         base.VersionInfo("2.2.0", "2021-10-13"),
@@ -89,6 +90,7 @@ class StreamCom(base.Component):
     VERSION.changed("2.2.0", "Updated the module to version 2.0.21")
     VERSION.changed("2.2.1", "Usage of report.txt as indicator for successful StreamCom runs")
     VERSION.changed("2.2.2", "Specified working directory for module")
+    VERSION.changed("2.2.3", "Removed reaches input")
 
     def __init__(self, name, observer, store):
         """
@@ -109,13 +111,6 @@ class StreamCom(base.Component):
                 self.default_observer,
                 description="""The working directory for the module. It is used for all files prepared as module inputs
                 or generated as module outputs."""
-            ),
-            base.Input(
-                "Reaches",
-                (attrib.Class(list[int], 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
-                self.default_observer,
-                description="""The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
-                that apply scenario-wide."""
             ),
             base.Input(
                 "Reach",
@@ -378,7 +373,7 @@ class StreamCom(base.Component):
         Returns:
             Nothing.
         """
-        reaches = np.asarray(self.inputs["Reaches"].read().values, np.int)
+        reaches = np.asarray(self.inputs["Concentrations"].describe()["element_names"][1].get_values(), np.int)
         reach = self.inputs["Reach"].read().values
         indices = np.nonzero(reaches == int(reach))
         if len(indices[0]) != 1:
