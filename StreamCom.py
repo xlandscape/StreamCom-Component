@@ -111,13 +111,6 @@ class StreamCom(base.Component):
                 or generated as module outputs."""
             ),
             base.Input(
-                "Reaches",
-                (attrib.Class(list[int], 1), attrib.Unit(None, 1), attrib.Scales("space/reach", 1)),
-                self.default_observer,
-                description="""The numeric identifiers for individual reaches (in the order of the hydro,logical inputs)
-                that apply scenario-wide."""
-            ),
-            base.Input(
                 "Reach",
                 (attrib.Class(int, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
                 self.default_observer,
@@ -378,7 +371,7 @@ class StreamCom(base.Component):
         Returns:
             Nothing.
         """
-        reaches = np.asarray(self.inputs["Reaches"].read().values, np.int)
+        reaches = np.asarray(self.inputs["Concentrations"].describe()["element_names"][1].get_values(), np.int)
         reach = self.inputs["Reach"].read().values
         indices = np.nonzero(reaches == int(reach))
         if len(indices[0]) != 1:
