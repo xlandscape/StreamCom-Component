@@ -1,19 +1,4 @@
-species	start ind /m²	start biomass [g/m²]
-Asellus aquaticus	300	0.5
-Baetis rhodani	300	0.5
-Dikerogammarus villosus	300	0.5
-Ecdyonurus dispar	300	0.5
-Epeorus assimilis	300	0.5
-Gammarus fossarum	300	0.5
-Gammarus pulex	300	0.5
-Gammarus roeselii	300	0.5
-Habrophlebia lauta	300	0.5
-Lymnaea stagnalis	300	0.5
-Planorbis planorbis	300	0.5
-Potamopyrgus antipodarum	300	0.5
-Rhithrogena semicolorata	300	0.5
-Sphaerium corneum	300	0.5
-Stagnicola palustris	300	0.5
-Gasterosteus aculeatus	1	0.05
-Perca fluviatilis	1	0.05
-Salmo trutta	1	0.05
+species	start ind /mì	start biomass [g/mì]	background mortality [/day]	migration rate	half saturation food	half saturation population
+Asellus aquaticus	200	0.5	0.0075	0	1020	0
+Gammarus pulex	200	0.5	0.00529	0	1100	0
+Cloeon dipterum	600	0.7	0.008	0.935	1000.51	0

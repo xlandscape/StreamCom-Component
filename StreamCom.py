@@ -103,7 +103,7 @@ class StreamCom(base.Component):
         """
         super(StreamCom, self).__init__(name, observer, store)
         # noinspection SpellCheckingInspection
-        self._module = base.Module("STREAM-com", "2.0.21")
+        self._module = base.Module("STREAM-com", "3.2.0")
         self._inputs = base.InputContainer(self, [
             base.Input(
                 "ProcessingPath",
@@ -336,6 +336,30 @@ class StreamCom(base.Component):
                 (attrib.Class(int), attrib.Unit("1"), attrib.Scales("global")),
                 self.default_observer,
                 description="The number of module-internal Monte Carlo runs."
+            ),
+            base.Input(
+                "SaveEnvironmentalConditions",
+                (attrib.Class(bool, 1), attrib.Unit(None, 1), attrib.Scales("global", 1)),
+                self.default_observer,
+                description="Specifies whether to output environmental conditions."
+            ),
+            base.Input(
+                "MinimumPeriphytonDensity",
+                (attrib.Class(float, 1), attrib.Unit("g/m²", 1), attrib.Scales("global", 1)),
+                self.default_observer,
+                description="The minimum periphyton density."
+            ),
+            base.Input(
+                "ReproductionSuccessRate",
+                (attrib.Class(float, 1), attrib.Unit("1", 1), attrib.Scales("global", 1)),
+                self.default_observer,
+                description="The rate at which reproduction succeeds."
+            ),
+            base.Input(
+                "LeafLitterEntryDensity",
+                (attrib.Class(float, 1), attrib.Unit("g/m²", 1), attrib.Scales("global", 1)),
+                self.default_observer,
+                description="The density with which litter enters the water body."
             )
         ])
         self._store = store
@@ -495,7 +519,7 @@ class StreamCom(base.Component):
                 os.path.join(os.path.dirname(__file__), "module", "ProjectStreamCom.exe"),
                 "--site_name",
                 "site.txt",
-                "--num_mc",
+                "--num_monte_carlo",
                 str(self.inputs["NumberRuns"].read().values),
                 "--sim_duration",
                 str(number_days),
@@ -613,6 +637,10 @@ class StreamCom(base.Component):
             f.write(f"save trait size,{self.inputs['SaveTraitSize'].read().values}\n")
             f.write(f"save population distribution,{self.inputs['SavePopulationDistribution'].read().values}\n")
             f.write(f"save trait distribution,{self.inputs['SaveTraitDistribution'].read().values}\n")
+            f.write(f"save environmental conditions,{self.inputs['SaveEnvironmentalConditions'].read().values}\n")
+            f.write(f"Minimum periphyton density [g/m^2],{self.inputs['MinimumPeriphytonDensity'].read().values}\n")
+            f.write(f"reproduction success rate,{self.inputs['ReproductionSuccessRate'].read().values}\n")
+            f.write(f"Leaf litter entry density [g/m^2] ,{self.inputs['LeafLitterEntryDensity'].read().values}\n")
 
     def prepare_biomass_input(self, biomass_file):
         """

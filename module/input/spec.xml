@@ -276,154 +276,192 @@
 			 rs:basetable='supplementaries' rs:basecolumn='depth_factor'>
 			<s:datatype dt:type='r4' dt:maxLength='4' rs:precision='7' rs:fixedlength='true'/>
 		</s:AttributeType>
+		<s:AttributeType name='E_He' rs:number='69' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true' rs:basetable='DEB_add_my_pet'
+			 rs:basecolumn='E_He'>
+			<s:datatype dt:type='r4' dt:maxLength='4' rs:precision='7' rs:fixedlength='true'/>
+		</s:AttributeType>
+		<s:AttributeType name='T_AH' rs:number='70' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true' rs:basetable='DEB_add_my_pet'
+			 rs:basecolumn='T_AH'>
+			<s:datatype dt:type='r4' dt:maxLength='4' rs:precision='7' rs:fixedlength='true'/>
+		</s:AttributeType>
+		<s:AttributeType name='T_H' rs:number='71' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true' rs:basetable='DEB_add_my_pet'
+			 rs:basecolumn='T_H'>
+			<s:datatype dt:type='r4' dt:maxLength='4' rs:precision='7' rs:fixedlength='true'/>
+		</s:AttributeType>
 		<s:extends type='rs:rowbase'/>
 	</s:ElementType>
 </s:Schema>
 <rs:data>
-	<z:row species='Asellus aquaticus' model='std' S_model='lgp' z_f='0.28856999' z_m='0.35499999' p_Am='73.848801'
-		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.021591' kap='0.82103997' kap_R='0.94999999' p_M='210.11501' k_J='2.0000001E-3'
-		 E_G='4442.3101' E_Hb='0.25049999' E_Hj='0.25049999' E_Hp='2.0120001' h_a='9.0450001E-8' s_G='9.9999997E-5' del_M='0.31799999'
-		 T_A='8000' s_M='1' E_0='2.16803' E_m='3420.3501' w='0.3186298' xi_WE='21.8964' L_b='6.0523398E-2' L_p='0.108988'
-		 L_i='0.28856999' E_Rj='-1' hpe='1' har='0' hps='0' hak='0' hli='2' hph='4' hpo='3' cup='7' zeu='0' zhy='0' zer='1'
-		 zmr='1' zhr='1' zep='2' zmp='2' zhp='1' zli='2' zpr='0' size_m='0.80000001' size_sd='0.18000001' adult='3' ovoviviparity='3'
-		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='3' fsh='3' fga='4' faf='0' fpf='0' fpr='0'
-		 T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
 	<z:row species='Baetis rhodani' model='hep' S_model='lgp' z_f='0.97599' z_m='0.97599' p_Am='26.9006' F_m='6.5'
 		 kap_X='0.80000001' kap_P='0.1' v='0.010914' kap='0.64640999' kap_R='0.94999999' p_M='17.816601' k_J='2.0000001E-3'
 		 E_G='4440.0698' E_Hb='4.4669998E-3' E_Hj='5.0339999' E_Hp='5.0339999' h_a='8.8499999E-3' s_G='9.9999997E-5' del_M='0.21574999'
 		 T_A='14650' s_M='10.3836' E_0='1.7193301E-2' E_m='2464.78' w='0.27710769' xi_WE='21.729099' L_b='0.0122386' L_p='0.12707999'
 		 L_i='0.23480301' E_Rj='3409.6101' hpe='0' har='0' hps='0' hak='0' hli='5' hph='5' hpo='0' cup='5' zeu='0' zhy='1'
-		 zer='2' zmr='3' zhr='2' zep='1' zmp='1' zhp='0' zli='0' zpr='0' size_m='0.2' size_sd='0.07' adult='0' ovoviviparity='0'
-		 iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='5' fsh='0' fga='5' faf='0' fpf='0' fpr='0'
-		 T_AL='98690' T_L='275.60001' Include='True' hs='0.001' sr='4.0000002E-3' depth_factor='2'/>
-	<z:row species='Dikerogammarus villosus' model='abj' S_model='lgp' z_f='9.5559999E-2' z_m='9.5559999E-2' p_Am='113.077'
-		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.01339' kap='0.80299997' kap_R='0.94999999' p_M='950.20001' k_J='2.0000001E-3'
-		 E_G='4444' E_Hb='9.0549998E-2' E_Hj='6.0359998' E_Hp='6.0370002' h_a='0.0000131' s_G='9.9999997E-5' del_M='0.1913'
-		 T_A='7700' s_M='3.5341201' E_0='0.881872' E_m='8444.9102' w='0.53696936' xi_WE='22.350201' L_b='3.6761701E-2'
-		 L_p='0.12992699' L_i='0.33772001' E_Rj='-1' hpe='1' har='0' hps='0' hak='0' hli='2' hph='4' hpo='3' cup='3' zeu='0'
-		 zhy='0' zer='0' zmr='0' zhr='0' zep='4' zmp='3' zhp='3' zli='0' zpr='0' size_m='1.2' size_sd='0.2' adult='3'
-		 ovoviviparity='3' iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='1' fsh='2' fga='2' faf='0'
-		 fpf='0' fpr='3' T_AL='60520' T_L='275.39999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 zer='2' zmr='3' zhr='2' zep='1' zmp='1' zhp='0' zli='0' zpr='0' size_m='0.57801718' size_sd='0.51029342' adult='0'
+		 ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='5' fsh='0' fga='5' faf='0'
+		 fpf='0' fpr='0' T_AL='98690' T_L='275.60001' Include='True' hs='0.001' sr='4.0000002E-3' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
+	<z:row species='Chironomus riparius' model='hax' S_model='lgp' z_f='9.0920001E-2' z_m='9.0540998E-2' p_Am='794.10559'
+		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.015189' kap='0.40887' kap_R='0.95' p_M='3571.1171' k_J='2.0000001E-3'
+		 E_G='4400' E_Hb='5.4009999E-3' E_Hj='1.7419999E-2' E_Hp='1.7419999E-2' h_a='12.42' s_G='1' del_M='4.8927002E-2'
+		 T_A='7367.6007' s_M='0' E_0='4.1014001E-2' E_m='0' w='13.0807' xi_WE='22.8669' L_b='8.5E-3' L_p='0.0121'
+		 L_i=' 0.0742' E_Rj='199.7686'  hpe='2' har='2' hps='2' hak='2' hli='5' hph='5' hpo='5' cup='7' zeu='0' zhy='0'
+		 zer='0' zmr='1' zhr='2' zep='2' zmp='1' zhp='1' zli='3' zpr='0' size_m='1.873984' size_sd='1.7319241' adult='0'
+		 ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='0' fsh='0' fga='10' faf='0'
+		 fpf='0' fpr='0' T_AL='41390' T_L='285.39999' Include='True' hs='0' sr='0' depth_factor='0' E_He='3.0489999E-3'
+		 T_AH='7141.0032' T_H='293.15701'/>
+	<z:row species='Cloeon dipterum' model='hep' S_model='lgp' z_f='6.6969998E-2' z_m='5.4790001E-2' p_Am='78.177399'
+		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='3.2309999E-3' kap='0.70749998' kap_R='0.94999999' p_M='0.94999999'
+		 k_J='2.0000001E-3' E_G='4409' E_Hb='0.001434' E_Hj='0.1683' E_Hp='0.1683' h_a='0.0001929' s_G='1' del_M='0.1238'
+		 T_A='6946' s_M='4.6441598' E_0='1.8300001E-2' E_m='24196' w='1.22' xi_WE='22.721399' L_b='8.2071796E-3' L_p='3.8115501E-2'
+		 L_i='0.31101999' E_Rj='8808' hpe='2' har='2' hps='2' hak='2' hli='0' hph='10' hpo='5' cup='7' zeu='1' zhy='1'
+		 zer='1' zmr='1' zhr='1' zep='1' zmp='1' zhp='1' zli='2' zpr='0' size_m='0.96215045' size_sd='1.5501274' adult='0'
+		 ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='0' fsh='0' fga='5' faf='0'
+		 fpf='0' fpr='0' T_AL='41390' T_L='285.39999' Include='True' hs='0' sr='0' depth_factor='0' E_He='0' T_AH='0'
+		 T_H='273.14999'/>
 	<z:row species='Ecdyonurus dispar' model='hep' S_model='sgp' z_f='1.2077' z_m='1.2077' p_Am='59.062099' F_m='6.5'
 		 kap_X='0.80000001' kap_P='0.1' v='2.1345001E-3' kap='0.40177' kap_R='0.94999999' p_M='19.648399' k_J='2.0000001E-3'
 		 E_G='4400' E_Hb='2.4115001E-3' E_Hj='6.1765999E-2' E_Hp='6.1765999E-2' h_a='2264.3999' s_G='1' del_M='0.15924001'
 		 T_A='11668' s_M='2.94363' E_0='0.0141651' E_m='27670.199' w='1.3724011' xi_WE='22.753401' L_b='7.1489401E-3'
 		 L_p='0.0210438' L_i='0.119999' E_Rj='17341.4' hpe='0' har='0' hps='0' hak='0' hli='10' hph='0' hpo='0' cup='5'
-		 zeu='0' zhy='0' zer='1' zmr='3' zhr='3' zep='2' zmp='1' zhp='0' zli='0' zpr='0' size_m='5.0000001E-2' size_sd='9.9999998E-3'
+		 zeu='0' zhy='0' zer='1' zmr='3' zhr='3' zep='2' zmp='1' zhp='0' zli='0' zpr='0' size_m='0.31020626' size_sd='0.44336694'
 		 adult='0' ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='5' fsh='0' fga='5'
-		 faf='0' fpf='0' fpr='0' T_AL='116680' T_L='276.14999' Include='True' hs='0.001' sr='4.0000002E-3' depth_factor='2'/>
-	<z:row species='Epeorus assimilis' model='hep' S_model='sgp' z_f='1.377' z_m='1.377' p_Am='31.18' F_m='6.5'
-		 kap_X='0.80000001' kap_P='0.1' v='7.5790002E-3' kap='0.7755' kap_R='0.94999999' p_M='17.559999' k_J='2.0000001E-3'
-		 E_G='4434' E_Hb='0.005998' E_Hj='0.1375' E_Hp='0.1375' h_a='4.9900002E-4' s_G='9.9999997E-5' del_M='0.25170001'
-		 T_A='8000' s_M='2.8359001' E_0='4.5983002E-2' E_m='4114' w='0.34877267' xi_WE='21.9928' L_b='0.0166898' L_p='4.7330499E-2'
-		 L_i='0.48884201' E_Rj='3923' hpe='0' har='0' hps='0' hak='3' hli='7' hph='0' hpo='0' cup='6' zeu='0' zhy='1'
-		 zer='4' zmr='3' zhr='2' zep='0' zmp='0' zhp='0' zli='0' zpr='0' size_m='0.76999998' size_sd='0.17' adult='0'
-		 ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='10' fsh='0' fga='0' faf='0'
-		 fpf='0' fpr='0' T_AL='59380' T_L='275.76999' Include='True' hs='0.001' sr='4.0000002E-3' depth_factor='2'/>
+		 faf='0' fpf='0' fpr='0' T_AL='116680' T_L='276.14999' Include='True' hs='0.001' sr='4.0000002E-3' depth_factor='2'
+		 E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Gammarus fossarum' model='abj' S_model='lgp' z_f='5.8189999E-2' z_m='7.0469998E-2' p_Am='30.6514'
 		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.01051' kap='0.88050002' kap_R='0.94999999' p_M='463.79999' k_J='2.0000001E-3'
 		 E_G='4440' E_Hb='3.9549999E-2' E_Hj='10' E_Hp='10.01' h_a='1.477E-6' s_G='9.9999997E-5' del_M='0.2289' T_A='7769'
 		 s_M='4.9224701' E_0='0.45956001' E_m='2916.3999' w='0.29673025' xi_WE='21.813999' L_b='3.5047598E-2' L_p='0.17257801'
 		 L_i='0.286439' E_Rj='-1' hpe='0' har='0' hps='3' hak='4' hli='3' hph='0' hpo='0' cup='5' zeu='1' zhy='1' zer='2'
-		 zmr='2' zhr='2' zep='1' zmp='0' zhp='0' zli='1' zpr='0' size_m='1' size_sd='0.23999999' adult='3' ovoviviparity='3'
+		 zmr='2' zhr='2' zep='1' zmp='0' zhp='0' zli='1' zpr='0' size_m='0.71947664' size_sd='0.53189516' adult='3' ovoviviparity='3'
 		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='1' fsh='7' fga='2' faf='0' fpf='0' fpr='0'
-		 T_AL='7769' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
-	<z:row species='Gammarus pulex' model='abj' S_model='lgp' z_f='9.1430098E-2' z_m='0.110254' p_Am='48.228901'
-		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.0174111' kap='0.90993202' kap_R='0.94999999' p_M='479.98401' k_J='2.0000001E-3'
-		 E_G='4441.71' E_Hb='4.9244501E-2' E_Hj='3.1294799' E_Hp='3.28879' h_a='2.6380701E-6' s_G='9.9999997E-5' del_M='0.221725'
-		 T_A='10000' s_M='3.36216' E_0='0.77385098' E_m='2770.02' w='0.29037061' xi_WE='21.787701' L_b='0.043205' L_p='0.147643'
-		 L_i='0.30740201' E_Rj='-1' hpe='0' har='0' hps='1' hak='1' hli='4' hph='3' hpo='0' cup='5' zeu='0' zhy='0' zer='0'
-		 zmr='4' zhr='4' zep='2' zmp='0' zhp='0' zli='0' zpr='0' size_m='1' size_sd='0.11' adult='3' ovoviviparity='3'
-		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='1' fsh='6' fga='2' faf='0' fpf='0' fpr='1'
-		 T_AL='10000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
+	<z:row species='Gammarus pulex' model='abj' S_model='lgp' z_f='0.1129' z_m='0.1305' p_Am='43.062901' F_m='6.5'
+		 kap_X='0.80000001' kap_P='0.1' v='0.018066' kap='0.88685' kap_R='0.94999999' p_M='338.41699' k_J='2.0000001E-3'
+		 E_G='4446.2202' E_Hb='6.3150004E-2' E_Hj='2.108' E_Hp='2.109' h_a='3.2119999E-6' s_G='9.9999997E-5' del_M='0.23450001'
+		 T_A='10000' s_M='2.8272901' E_0='0.77022702' E_m='2383.6399' w='0.2735796' xi_WE='21.712601' L_b='4.4371299E-2'
+		 L_p='0.153997' L_i='0.31906' E_Rj='-1' hpe='2' har='2' hps='2' hak='2' hli='0' hph='5' hpo='5' cup='7' zeu='0'
+		 zhy='0' zer='0' zmr='4' zhr='4' zep='2' zmp='0' zhp='0' zli='0' zpr='0' size_m='0.74905097' size_sd='0.6373601'
+		 adult='3' ovoviviparity='3' iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='10' fsh='0' fga='0'
+		 faf='0' fpf='0' fpr='1' T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
 	<z:row species='Gammarus roeselii' model='abj' S_model='lgp' z_f='9.0130001E-2' z_m='0.1041' p_Am='46.9939'
 		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.01395' kap='0.83639997' kap_R='0.94999999' p_M='436.10001' k_J='2.0000001E-3'
 		 E_G='4354' E_Hb='7.7299997E-2' E_Hj='5.5700002' E_Hp='11.15' h_a='0.00001258' s_G='9.9999997E-5' del_M='0.2631'
 		 T_A='12540' s_M='3.5536599' E_0='0.69440901' E_m='3368.74' w='0.31638765' xi_WE='21.8885' L_b='0.0401696' L_p='0.175877'
 		 L_i='0.32029101' E_Rj='-1' hpe='0' har='0' hps='0' hak='0' hli='0' hph='10' hpo='0' cup='4' zeu='0' zhy='1' zer='1'
-		 zmr='1' zhr='2' zep='2' zmp='1' zhp='0' zli='2' zpr='0' size_m='1' size_sd='0.28999999' adult='3' ovoviviparity='3'
+		 zmr='1' zhr='2' zep='2' zmp='1' zhp='0' zli='2' zpr='0' size_m='0.67951047' size_sd='0.53786319' adult='3' ovoviviparity='3'
 		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='1' fsh='5' fga='3' faf='0' fpf='0' fpr='1'
-		 T_AL='12540' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Habrophlebia lauta' model='hep' S_model='lgp' z_f='3.2990001E-2' z_m='3.2990001E-2' p_Am='11.6695'
 		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='2.9889999E-3' kap='0.88260001' kap_R='0.94999999' p_M='312.20001'
 		 k_J='2.0000001E-3' E_G='4452' E_Hb='7.9269998E-4' E_Hj='0.2377' E_Hp='0.2377' h_a='0.00001801' s_G='9.9999997E-5'
 		 del_M='0.1928' T_A='8000' s_M='6.0630002' E_0='0.0108374' E_m='3904.1399' w='0.33965296' xi_WE='21.9655' L_b='0.0101061'
 		 L_p='6.1273001E-2' L_i='0.142988' E_Rj='3111' hpe='0' har='0' hps='0' hak='2' hli='8' hph='0' hpo='0' cup='4'
-		 zeu='0' zhy='0' zer='2' zmr='3' zhr='3' zep='0' zmp='0' zhp='0' zli='2' zpr='0' size_m='0.22' size_sd='2.9999999E-2'
+		 zeu='0' zhy='0' zer='2' zmr='3' zhr='3' zep='0' zmp='0' zhp='0' zli='2' zpr='0' size_m='1.7005433' size_sd='1.9422382'
 		 adult='0' ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='2' fsh='0' fga='8'
-		 faf='0' fpf='0' fpr='0' T_AL='100000' T_L='282' Include='True' hs='0.001' sr='0.012' depth_factor='2'/>
-	<z:row species='Lymnaea stagnalis' model='abj' S_model='sgp' z_f='0.29589999' z_m='0.29589999' p_Am='25.204901'
+		 faf='0' fpf='0' fpr='0' T_AL='0' T_L='173.15' Include='True' hs='0.001' sr='0.012' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
+	<z:row species='Lymnaea stagnalis' model='abj' S_model='lgp' z_f='0.29589999' z_m='0.29589999' p_Am='25.204901'
 		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.01394' kap='0.68760002' kap_R='0.47499999' p_M='58.57' k_J='2.0000001E-3'
 		 E_G='3900' E_Hb='0.285' E_Hj='50.099998' E_Hp='496.60001' h_a='0.00001287' s_G='9.9999997E-5' del_M='0.43430001'
 		 T_A='8000' s_M='5.34659' E_0='1.19274' E_m='1808.1' w='0.2285679' xi_WE='21.639601' L_b='5.3027801E-2' L_p='0.58055001'
-		 L_i='1.58206' E_Rj='-1' hpe='2' har='0' hps='0' hak='0' hli='0' hph='7' hpo='1' cup='3' zeu='0' zhy='0' zer='0'
-		 zmr='0' zhr='1' zep='1' zmp='0' zhp='0' zli='8' zpr='0' size_m='2.0999999' size_sd='0.69999999' adult='2' ovoviviparity='0'
-		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='4' fsh='4' fga='0' faf='0' fpf='0' fpr='0'
-		 T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 L_i='1.58206' E_Rj='-1' hpe='2' har='2' hps='2' hak='2' hli='5' hph='5' hpo='10' cup='7' zeu='0' zhy='0' zer='0'
+		 zmr='0' zhr='1' zep='1' zmp='0' zhp='0' zli='8' zpr='0' size_m='0.65096575' size_sd='0.49444208' adult='2' ovoviviparity='0'
+		 iteroparity='1' spawning_photoperiod='14' spawing_induction='3' fgr='0' fsh='10' fga='0' faf='0' fpf='0' fpr='0'
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Planorbis planorbis' model='abj' S_model='sgp' z_f='0.1051' z_m='0.1051' p_Am='83.5802' F_m='6.5'
 		 kap_X='0.80000001' kap_P='0.1' v='0.0173' kap='0.96310002' kap_R='0.47499999' p_M='765.90002' k_J='2.0000001E-3'
 		 E_G='3919' E_Hb='5.0260001E-3' E_Hj='1.036' E_Hp='25.129999' h_a='2.8060001E-6' s_G='9.9999997E-5' del_M='0.4941'
 		 T_A='8000' s_M='5.38484' E_0='0.25426701' E_m='4831.23' w='0.35993955' xi_WE='22.140699' L_b='0.0289775' L_p='0.37000301'
 		 L_i='0.56594598' E_Rj='-1' hpe='3' har='0' hps='0' hak='0' hli='0' hph='5' hpo='2' cup='3' zeu='0' zhy='0' zer='0'
-		 zmr='0' zhr='0' zep='2' zmp='2' zhp='2' zli='4' zpr='0' size_m='0.62' size_sd='0.19' adult='3' ovoviviparity='0'
+		 zmr='0' zhr='0' zep='2' zmp='2' zhp='2' zli='4' zpr='0' size_m='0.56681257' size_sd='0.63268167' adult='3' ovoviviparity='0'
 		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='6' fsh='2' fga='0' faf='0' fpf='0' fpr='0'
-		 T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
-	<z:row species='Potamopyrgus antipodarum' model='abj' S_model='sgp' z_f='6.1919998E-2' z_m='6.1919998E-2' p_Am='2.3706801'
-		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='3.9059999E-3' kap='0.98729998' kap_R='0.94999999' p_M='37.799999'
-		 k_J='2.0000001E-3' E_G='3913' E_Hb='0.0002022' E_Hj='3.2760002E-2' E_Hp='0.0447' h_a='2.873E-8' s_G='9.9999997E-5'
-		 del_M='0.44029999' T_A='8000' s_M='5.1171398' E_0='1.8471001E-2' E_m='606.93402' w='0.1763742' xi_WE='21.233299'
-		 L_b='0.0155814' L_p='8.8301003E-2' L_i='0.31685299' E_Rj='-1' hpe='3' har='0' hps='3' hak='0' hli='1' hph='2'
-		 hpo='1' cup='7' zeu='0' zhy='1' zer='1' zmr='1' zhr='2' zep='2' zmp='1' zhp='1' zli='1' zpr='0' size_m='2.0999999'
-		 size_sd='0.69999999' adult='3' ovoviviparity='3' iteroparity='1' spawning_photoperiod='0' spawing_induction='0'
-		 fgr='2' fsh='2' fga='3' faf='0' fpf='0' fpr='0' T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1'
-		 depth_factor='2'/>
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Rhithrogena semicolorata' model='hep' S_model='lgp' z_f='0.1278' z_m='0.1278' p_Am='129.744'
 		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.001841' kap='0.51289999' kap_R='0.94999999' p_M='520.70001' k_J='2.0000001E-3'
 		 E_G='4443' E_Hb='0.001376' E_Hj='0.77899998' E_Hp='0.77899998' h_a='6.0139998E-4' s_G='1' del_M='0.1127' T_A='11720'
 		 s_M='7.99827' E_0='0.0202458' E_m='70474.5' w='3.2324381' xi_WE='22.9025' L_b='6.2741302E-3' L_p='5.0182201E-2'
 		 L_i='0.13518301' E_Rj='15230' hpe='0' har='0' hps='0' hak='0' hli='10' hph='0' hpo='0' cup='6' zeu='0' zhy='1'
-		 zer='2' zmr='3' zhr='3' zep='1' zmp='0' zhp='0' zli='0' zpr='0' size_m='0.38999999' size_sd='4.5000002E-2' adult='0'
+		 zer='2' zmr='3' zhr='3' zep='1' zmp='0' zhp='0' zli='0' zpr='0' size_m='0.80830926' size_sd='0.49766687' adult='0'
 		 ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='10' fsh='0' fga='0' faf='0'
-		 fpf='0' fpr='0' T_AL='121200' T_L='278.10001' Include='True' hs='0.001' sr='0.003' depth_factor='2'/>
+		 fpf='0' fpr='0' T_AL='121200' T_L='278.10001' Include='True' hs='0.001' sr='0.003' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
 	<z:row species='Sphaerium corneum' model='std' S_model='sgp' z_f='1.1098' z_m='1.1098' p_Am='35.765701' F_m='6.5'
 		 kap_X='0.80000001' kap_P='0.1' v='0.024751' kap='0.99999601' kap_R='0.94999999' p_M='32.227001' k_J='2.0000001E-3'
 		 E_G='2348.8201' E_Hb='6.184E-10' E_Hj='6.184E-10' E_Hp='5.3399999E-4' h_a='2.5590001E-7' s_G='9.9999997E-5' del_M='0.74673998'
 		 T_A='8000' s_M='1' E_0='0.00024346' E_m='1445.02' w='0.15279263' xi_WE='21.7803' L_b='4.0024002E-3' L_p='0.34077299'
 		 L_i='1.1098' E_Rj='-1' hpe='3' har='0' hps='0' hak='0' hli='2' hph='3' hpo='2' cup='3' zeu='0' zhy='0' zer='0'
-		 zmr='1' zhr='2' zep='2' zmp='3' zhp='0' zli='2' zpr='0' size_m='0.41999999' size_sd='0.17' adult='3' ovoviviparity='3'
+		 zmr='1' zhr='2' zep='2' zmp='3' zhp='0' zli='2' zpr='0' size_m='25.531496' size_sd='35.404907' adult='3' ovoviviparity='3'
 		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='0' fsh='0' fga='0' faf='10' fpf='0' fpr='0'
-		 T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Stagnicola palustris' model='abj' S_model='sgp' z_f='7.4369997E-2' z_m='7.4369997E-2' p_Am='85.5849'
 		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.01722' kap='0.89590001' kap_R='0.47499999' p_M='1031' k_J='2.0000001E-3'
 		 E_G='3914' E_Hb='1.6279999E-2' E_Hj='6.1939998' E_Hp='115.5' h_a='3.907E-7' s_G='9.9999997E-5' del_M='0.35960001'
 		 T_A='8000' s_M='6.3147702' E_0='0.27320501' E_m='4970.0801' w='0.36597294' xi_WE='22.1551' L_b='2.8596001E-2'
 		 L_p='0.373779' L_i='0.46962899' E_Rj='-1' hpe='2' har='0' hps='0' hak='0' hli='0' hph='6' hpo='2' cup='2' zeu='0'
-		 zhy='0' zer='0' zmr='0' zhr='0' zep='0' zmp='0' zhp='0' zli='8' zpr='2' size_m='0.89999998' size_sd='0.23' adult='2'
-		 ovoviviparity='0' iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='10' fsh='0' fga='0' faf='0'
-		 fpf='0' fpr='0' T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 zhy='0' zer='0' zmr='0' zhr='0' zep='0' zmp='0' zhp='0' zli='8' zpr='2' size_m='49.248096' size_sd='61.287868'
+		 adult='2' ovoviviparity='0' iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='10' fsh='0' fga='0'
+		 faf='0' fpf='0' fpr='0' T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
+	<z:row species='Dikerogammarus villosus' model='abj' S_model='lgp' z_f='9.5559999E-2' z_m='9.5559999E-2' p_Am='113.077'
+		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='0.01339' kap='0.80299997' kap_R='0.94999999' p_M='950.20001' k_J='2.0000001E-3'
+		 E_G='4444' E_Hb='9.0549998E-2' E_Hj='6.0359998' E_Hp='6.0370002' h_a='0.0000131' s_G='9.9999997E-5' del_M='0.1913'
+		 T_A='7700' s_M='3.5341201' E_0='0.881872' E_m='8444.9102' w='0.53696936' xi_WE='22.350201' L_b='3.6761701E-2'
+		 L_p='0.12992699' L_i='0.33772001' E_Rj='-1' hpe='0' har='0' hps='0' hak='0' hli='0' hph='0' hpo='0' cup='0' zeu='0'
+		 zhy='0' zer='0' zmr='0' zhr='0' zep='4' zmp='3' zhp='3' zli='0' zpr='0' size_m='0.87891394' size_sd='0.88648075'
+		 adult='3' ovoviviparity='3' iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='1' fsh='2' fga='2'
+		 faf='0' fpf='0' fpr='3' T_AL='60520' T_L='275.39999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
+	<z:row species='Potamopyrgus antipodarum' model='abj' S_model='sgp' z_f='6.1919998E-2' z_m='6.1919998E-2' p_Am='2.3706801'
+		 F_m='6.5' kap_X='0.80000001' kap_P='0.1' v='3.9059999E-3' kap='0.98729998' kap_R='0.94999999' p_M='37.799999'
+		 k_J='2.0000001E-3' E_G='3913' E_Hb='0.0002022' E_Hj='3.2760002E-2' E_Hp='0.0447' h_a='2.873E-8' s_G='9.9999997E-5'
+		 del_M='0.44029999' T_A='8000' s_M='5.1171398' E_0='1.8471001E-2' E_m='606.93402' w='0.1763742' xi_WE='21.233299'
+		 L_b='0.0155814' L_p='8.8301003E-2' L_i='0.31685299' E_Rj='-1' hpe='3' har='0' hps='3' hak='0' hli='1' hph='2'
+		 hpo='1' cup='7' zeu='0' zhy='1' zer='1' zmr='1' zhr='2' zep='2' zmp='1' zhp='1' zli='1' zpr='0' size_m='0.64930022'
+		 size_sd='0.83689308' adult='3' ovoviviparity='3' iteroparity='1' spawning_photoperiod='0' spawing_induction='0'
+		 fgr='2' fsh='2' fga='3' faf='0' fpf='0' fpr='0' T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1'
+		 depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
+	<z:row species='Asellus aquaticus' model='abj' S_model='lgp' z_f='0.1596' z_m='0.1771' p_Am='62.890099' F_m='6.5'
+		 kap_X='0.80000001' kap_P='0.1' v='0.01159' kap='0.92070001' kap_R='0.94999999' p_M='362.79999' k_J='2.0000001E-3'
+		 E_G='4440' E_Hb='1.8130001E-2' E_Hj='8.8079996E-2' E_Hp='0.4131' h_a='4.6650001E-7' s_G='9.9999997E-5' del_M='0.2694'
+		 T_A='6806' s_M='1.60715' E_0='0.43525001' E_m='5426.23' w='0.40579379' xi_WE='22.136101' L_b='0.0335644' L_p='8.9523703E-2'
+		 L_i='0.25650099' E_Rj='-1' hpe='2' har='2' hps='2' hak='2' hli='0' hph='10' hpo='5' cup='7' zeu='0' zhy='0' zer='1'
+		 zmr='1' zhr='1' zep='2' zmp='2' zhp='1' zli='2' zpr='0' size_m='0.46967223' size_sd='0.4824473' adult='3' ovoviviparity='3'
+		 iteroparity='1' spawning_photoperiod='0' spawing_induction='0' fgr='0' fsh='10' fga='0' faf='0' fpf='0' fpr='0'
+		 T_AL='422000' T_L='280.10001' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
+	<z:row species='Epeorus assimilis' model='hep' S_model='sgp' z_f='1.377' z_m='1.377' p_Am='31.18' F_m='6.5'
+		 kap_X='0.80000001' kap_P='0.1' v='7.5790002E-3' kap='0.7755' kap_R='0.94999999' p_M='17.559999' k_J='2.0000001E-3'
+		 E_G='4434' E_Hb='0.005998' E_Hj='0.1375' E_Hp='0.1375' h_a='4.9900002E-4' s_G='9.9999997E-5' del_M='0.25170001'
+		 T_A='8000' s_M='2.8359001' E_0='4.5983002E-2' E_m='4114' w='0.34877267' xi_WE='21.9928' L_b='0.0166898' L_p='4.7330499E-2'
+		 L_i='0.48884201' E_Rj='3923' hpe='0' har='0' hps='0' hak='3' hli='7' hph='0' hpo='0' cup='6' zeu='0' zhy='1'
+		 zer='4' zmr='3' zhr='2' zep='0' zmp='0' zhp='0' zli='0' zpr='0' size_m='0.732171' size_sd='1.2099904' adult='0'
+		 ovoviviparity='0' iteroparity='0' spawning_photoperiod='0' spawing_induction='0' fgr='10' fsh='0' fga='0' faf='0'
+		 fpf='0' fpr='0' T_AL='59380' T_L='275.76999' Include='True' hs='0.001' sr='4.0000002E-3' depth_factor='2' E_He='0'
+		 T_AH='0' T_H='273.14999'/>
 	<z:row species='Gasterosteus aculeatus' model='std' S_model='lgp' z_f='1.651' z_m='1.651' p_Am='194.71899' F_m='6.5'
 		 kap_X='0.80000001' kap_P='0.1' v='7.2619997E-2' kap='0.98439997' kap_R='0.94999999' p_M='116.1' k_J='2.0000001E-3'
 		 E_G='5224' E_Hb='0.1849' E_Hj='0.1849' E_Hp='78.790001' h_a='3.8870001E-9' s_G='9.9999997E-5' del_M='0.19859999'
 		 T_A='8000' s_M='1' E_0='17.621599' E_m='2681.3401' w='0.31651685' xi_WE='21.690599' L_b='0.12867799' L_p='0.80970198'
 		 L_i='1.651' E_Rj='-1' hpe='1' har='1' hps='2' hak='2' hli='1' hph='2' hpo='1' cup='7' zeu='0' zhy='0' zer='0'
-		 zmr='0' zhr='1' zep='2' zmp='3' zhp='3' zli='2' zpr='0' size_m='5.3000002' size_sd='0.25' adult='3' ovoviviparity='0'
+		 zmr='0' zhr='1' zep='2' zmp='3' zhp='3' zli='2' zpr='0' size_m='0.37062085' size_sd='0.37101814' adult='3' ovoviviparity='0'
 		 iteroparity='1' spawning_photoperiod='14.8' spawing_induction='1' fgr='0' fsh='0' fga='0' faf='0' fpf='0' fpr='10'
-		 T_AL='8000' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Perca fluviatilis' model='abj' S_model='lgp' z_f='13.2675' z_m='13.2675' p_Am='248.547' F_m='6.5'
 		 kap_X='0.80000001' kap_P='0.1' v='0.0566235' kap='0.873276' kap_R='0.94999999' p_M='16.359501' k_J='2.1118999E-3'
 		 E_G='5230.73' E_Hb='0.424142' E_Hj='0.424142' E_Hp='30989.801' h_a='1.41676E-8' s_G='9.9999997E-5' del_M='0.21772701'
 		 T_A='8000' s_M='1' E_0='5.8076' E_m='4389.4702' w='0.3907418' xi_WE='21.9417' L_b='8.2317904E-2' L_p='3.32687'
 		 L_i='13.2675' E_Rj='-1' hpe='1' har='1' hps='1' hak='1' hli='2' hph='3' hpo='1' cup='7' zeu='0' zhy='0' zer='0'
-		 zmr='0' zhr='0' zep='2' zmp='3' zhp='3' zli='2' zpr='0' size_m='9' size_sd='2' adult='3' ovoviviparity='0' iteroparity='1'
-		 spawning_photoperiod='10' spawing_induction='1' fgr='0' fsh='0' fga='0' faf='0' fpf='0' fpr='10' T_AL='8000'
-		 T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2'/>
+		 zmr='0' zhr='0' zep='2' zmp='3' zhp='3' zli='2' zpr='0' size_m='0.31852177' size_sd='0.40110803' adult='3' ovoviviparity='0'
+		 iteroparity='1' spawning_photoperiod='10' spawing_induction='1' fgr='0' fsh='0' fga='0' faf='0' fpf='0' fpr='10'
+		 T_AL='0' T_L='273.14999' Include='True' hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 	<z:row species='Salmo trutta' model='abj' S_model='lgp' z_f='11.05' z_m='11.05' p_Am='1320.27' F_m='6.5' kap_X='0.80000001'
 		 kap_P='0.1' v='0.1648' kap='0.96499997' kap_R='0.94999999' p_M='115.3' k_J='2.0000001E-3' E_G='5229' E_Hb='5.6009998'
 		 E_Hj='22.15' E_Hp='54470' h_a='6.2349999E-21' s_G='8' del_M='0.15710001' T_A='15690' s_M='1.57151' E_0='388.72601'
 		 E_m='8011.3799' w='0.54813164' xi_WE='22.249201' L_b='0.30535799' L_p='5.5400701' L_i='17.3652' E_Rj='-1' hpe='0'
 		 har='0' hps='1' hak='3' hli='6' hph='0' hpo='0' cup='5' zeu='0' zhy='0' zer='3' zmr='3' zhr='1' zep='1' zmp='0'
-		 zhp='0' zli='1' zpr='1' size_m='12' size_sd='7' adult='3' ovoviviparity='0' iteroparity='1' spawning_photoperiod='9.6999998'
+		 zhp='0' zli='1' zpr='1' size_m='4.3460555' size_sd='3.9671366' adult='3' ovoviviparity='0' iteroparity='1' spawning_photoperiod='9.6999998'
 		 spawing_induction='2' fgr='0' fsh='0' fga='0' faf='0' fpf='0' fpr='10' T_AL='15690' T_L='273.14999' Include='True'
-		 hs='0.001' sr='-1' depth_factor='2'/>
+		 hs='0.001' sr='-1' depth_factor='2' E_He='0' T_AH='0' T_H='273.14999'/>
 </rs:data>
 </xml>
