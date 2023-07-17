@@ -1,4 +1,0 @@
-species	start ind /mì	start biomass [g/mì]	background mortality [/day]	migration rate	half saturation food	half saturation population
-Asellus aquaticus	200	0.5	0.0075	0	1020	0
-Gammarus pulex	200	0.5	0.00529	0	1100	0
-Cloeon dipterum	600	0.7	0.008	0.935	1000.51	0
