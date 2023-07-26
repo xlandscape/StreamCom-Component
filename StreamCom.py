@@ -55,14 +55,14 @@ class StreamCom(base.Component):
     ))
 
     # ROADMAP
-    VERSION.roadmap.extend((
-        """Start module GUI in background
-        ([#1](https://gitlab.bayer.com/aqrisk-landscape/streamcom-component/-/issues/1))""",
-    ))
+    VERSION.roadmap.extend(
+        ("Start module GUI in background ([#1](https://github.com/xlandscape/StreamCom-Component/issues/1))",))
+    VERSION.roadmap.extend(
+        ("Placement of StreamCom scenario ([#1](https://github.com/xlandscape/StreamCom-Component/issues/2))",))
 
     # CHANGELOG
     VERSION.added("1.3.21", "`components.StreamCom` component")
-    VERSION.fixed("1.3.22", "Reach indexing in `components.StreamCom` ")
+    VERSION.fixed("1.3.22", "Reach indexing in `components.StreamCom`")
     VERSION.changed("1.3.24", "`components.StreamCom` uses base function to call module")
     VERSION.changed("1.3.25", "`components.StreamCom` updated to module version 2.0.4")
     VERSION.changed("1.3.27", "`components.StreamCom` specifies scales")
@@ -72,7 +72,7 @@ class StreamCom(base.Component):
     VERSION.fixed("1.3.33", "`components.StreamCom` where slicing of exposure input was incorrect")
     VERSION.changed("1.3.33", "`components.StreamCom` checks for physical units")
     VERSION.changed("1.3.33", "`components.StreamCom` checks for scales")
-    VERSION.fixed("1.3.34", "Physical units of killing rate in `components.StreamCom` ")
+    VERSION.fixed("1.3.34", "Physical units of killing rate in `components.StreamCom`")
     VERSION.fixed("1.3.35", "`components.StreamCom` receives CommonProgramFiles(x86) environment variable")
     VERSION.changed("2.0.0", "First independent release")
     VERSION.added("2.0.1", "Changelog and release history")
@@ -132,7 +132,7 @@ class StreamCom(base.Component):
                 "Species",
                 (attrib.Class(list[str], 1), attrib.Unit(None, 1), attrib.Scales("other/species", 1)),
                 self.default_observer,
-                description="""The list of species simulated by StreamCom. See the scenario description for the 
+                description="""The list of species simulated by StreamCom. See the scenario description for the
                 available species."""
             ),
             base.Input(
