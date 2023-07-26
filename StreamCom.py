@@ -103,7 +103,7 @@ class StreamCom(base.Component):
         """
         super(StreamCom, self).__init__(name, observer, store)
         # noinspection SpellCheckingInspection
-        self._module = base.Module("STREAM-com", "3.2.1")
+        self._module = base.Module("STREAM-com", "3.2.2", r"module\changelog.txt")
         self._inputs = base.InputContainer(self, [
             base.Input(
                 "ProcessingPath",
