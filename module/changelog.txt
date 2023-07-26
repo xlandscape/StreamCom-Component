@@ -1,0 +1,177 @@
+Jul 18, 2023
+
+    Version 3.2.2: fixed procedure Tenv.getphotoperiod: array length is now calculated in TFormSys.SetResultArrayLength, fixed state variable routine in Tcom.runthrough
+
+Apr 28, 2023
+
+    final STREAMcom Version for Landscape Model íncl. parameters, input/output files (Version 3.2.0)
+
+Apr 24, 2023
+
+    streamcom can start minimized
+
+Mar 27, 2023
+
+    change variables in biomass.txt
+    
+Mar 24, 2023
+
+    deactivation of 1) foodscenario input, 2) simplex Scenario input, 3) density dependent mortality, 4) tox temperature correction
+
+Mar 22, 2023
+
+    Refactoring of Result Array, include density dependend mortality    
+
+Mar 13, 2023
+   
+    new calculation of food density for all resources implemented, option to add degradation of food implemented
+
+Feb 24, 2023
+
+    debug of fooddensity recalculation after KS routine, Implementation of food degradation
+   
+Feb 10, 2023
+
+    successful debugging of Simplex Algorithmus for multiple Scenarios
+   
+Feb 03, 2023
+    
+    change signature of get_expData procedure (no handover of num_mc and sim_duration neccessary), include LoadNewScenario procedure
+
+Jan 31, 2023
+
+    successful implementation of GUI based Simplex, counter for Scenario folder established
+    
+Jan 27, 2023
+
+    new implementation of half saturation constant
+    
+Jan 23, 2023
+   
+    feeding of indiviuals is debugged: 1) Foodration-Correction on pXsum 2) Debugged: individuals do not only eat one hour per day under food limitation
+
+Jan 10, 2023
+
+    Debug: Repro Trigger, Debug: dilution by grwoth
+   
+Dec 15, 2022
+
+    Changes for food experiment simulations: 1) read in food scenario, 2) Arrhenius temperature for kd, 3) updated DEB-Parameter for Chironomus, 4) for scaled damage: inverse size correlation for Chironomus
+
+Oct 25, 2022
+
+    Checkbox 'Dilution by growth' implemented    
+    refinement of some comments
+
+Sep 01, 2022
+    
+    TKTD and DEBtox Procedures are debugged    
+
+Aug 26, 2022
+
+    update TKTD and DEB-TKTD procedure (UnitInd.toxicity), change trigger for chironomus riparius pupation from Reproduction buffer per volume[E_Rj] to Reproduction buffer per surface {E_Rj}
+
+Aug 25, 2022
+
+    update comments in Simplex Unit
+   
+Aug 17, 2022
+
+    no feeding inhibition for gatherer
+    
+Aug 04, 2022
+
+    population density dependence inhibition implemented (KS)
+    
+Jul 15, 2022
+
+    Input files updated       
+    Debugging: corrected E_Rj value in spec.xml, Chironomus with no aging, Chironomus no longer Viviparous reproduction
+    pupation occurs only once per lifetime, input folder for new chironomus simulations included
+
+Jul 11, 2022
+
+    DEB hex model for chironomus implemented
+    read in of the new parameters
+
+Jul 07, 2022
+
+   new parameter Chironomus, new parameter E_He, T_AH, T_H, U0E calculation use pAm without variability
+   changend calculation of g -> now calculation via primary parameter (g = E_G * v / (pAm * kap) -> parameter E_m not longer used in model
+
+Jul 06, 2022
+
+    p_Am Variability implemented
+
+Mar 15, 2022
+
+    update formel numbers in comments
+    
+Mar 14, 2022
+
+   Fix environmental_conditions output not being written 
+   Including a seperating underscore before no. of monte carlo iteration, which is needed by the parallel script to merge multiple batches correctly
+   Fix benchmark.py number of monte carlo simulations argument name
+   Update gitignore
+
+Mar 02, 2022
+
+   fix aging acceleration
+   add developement of eggs outside of the mother
+
+Feb 21, 2022
+   
+    update input files 
+    output of population size without eggs, no light correction of periphyton growth
+
+Feb 11, 2022
+
+    temporary changes of FPOM 
+    
+Feb 03, 2022
+
+    Unit of ressource graphs corrected (from g/m2 in j/m2)    
+    diapause for Lymnaea is now implemented
+
+Jan 18, 2022
+
+   first implementation of simplex algorithm complete
+   fix bug in range calibration
+
+Dec 28, 2021
+
+    calibration at emergence implemented    
+
+Dec 18, 2021
+
+    range and mean calibration implemented 
+    fix error in calibration selection
+
+Nov 24, 2021
+
+    simplex calibration at range implemented
+    
+Nov 19, 2021
+
+    add RadioSimplex button    
+    best parameters are reed in from biomass.txt
+
+Nov 17, 2021
+
+    first implementation of simplex algorithm complete, simplex parameter are reed in from txt-file or are calibrated (Case distinction)
+
+Nov 09, 2021
+
+    add Form to Simplex Unit
+    
+Nov 08, 2021
+
+    file SimplexCalibration is created, with simulation results for Simplex comparison
+   
+Nov 05, 2021
+
+    first adaption of ind parameter and simplex parameter
+    
+Oct 27, 2021
+
+    structure of downhill-simplex implemented  
