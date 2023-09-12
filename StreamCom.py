@@ -12,6 +12,7 @@ class StreamCom(base.Component):
     """Encapsulates the StreamCom module for the Landscape Model."""
     # RELEASES
     VERSION = base.VersionCollection(
+        base.VersionInfo("2.3.2", "2023-09-12"),
         base.VersionInfo("2.3.1", "2023-09-11"),
         base.VersionInfo("2.3.0", "2023-07-26"),
         base.VersionInfo("2.2.3", "2021-11-18"),
@@ -95,6 +96,9 @@ class StreamCom(base.Component):
     VERSION.changed("2.2.3", "Removed reaches input")
     VERSION.changed("2.3.0", "Updated StreamCom module to version 3.2.2")
     VERSION.added("2.3.1", "Information on runtime environment")
+    VERSION.changed("2.3.2", "Extended module information")
+    VERSION.added("2.3.2", "Creation of repository info during documentation")
+    VERSION.added("2.3.2", "Repository info, changelog and contributing note to module")
 
     def __init__(self, name, observer, store):
         """
