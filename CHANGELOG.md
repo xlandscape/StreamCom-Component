@@ -1,6 +1,20 @@
 # Changelog
 
-This is the changelog for the StreamCom component. It was automatically created on 2023-09-11.
+This is the changelog for the StreamCom component. It was automatically created on 2023-09-12.
+
+## [2.3.2] - 2023-09-12
+
+### Added
+
+- Creation of repository info during documentation
+
+- Repository info, changelog and contributing note to module
+
+### Changed
+
+- Extended module information
+
+### Fixed
 
 ## [2.3.1] - 2023-09-11
 
