@@ -19,3 +19,9 @@ base.documentation.write_changelog(
 )
 base.documentation.write_contribution_notes(
     os.path.join(root_folder, "..", "variant", "StreamCom", "CONTRIBUTING.md"))
+base.documentation.write_repository_info(
+    os.path.join(root_folder, "..", "variant", "StreamCom"),
+    os.path.join(root_folder, "..", "variant", "StreamCom", "repository.json"),
+    os.path.join(root_folder, "..", "..", "..", "versions.json"),
+    "component"
+)
